@@ -8,26 +8,36 @@ The current implementation contains a bounded, inspectable agent loop. A languag
 
 The bundled paper catalog is intentionally mocked for the first lesson. It will be replaced with provider-neutral adapters for real sources in the next stage.
 
-## Run on Windows with uv
+## Run on Windows with WSL
 
-Install [uv](https://docs.astral.sh/uv/) and Python 3.11 or later. In PowerShell, synchronize dependencies and run the deterministic demonstration:
+Use a WSL 2 Linux distribution and keep the repository in its Linux filesystem (for example, `~/projects/ai_agent_demo`) instead of under `/mnt/c`. This generally gives development tools and Git better file-system performance.
 
-```powershell
+Install Python 3.11 or later and [uv](https://docs.astral.sh/uv/) inside WSL. Then, from the repository root, synchronize the dependencies and run the deterministic demonstration:
+
+```bash
 uv sync --all-groups
-uv run python experiments/manual_agent/main.py --offline "What methods are being used to accelerate vision transformers on edge GPUs?"
+uv run python experiments/manual_agent/main.py --offline \
+  "What methods are being used to accelerate vision transformers on edge GPUs?"
 ```
 
-To run against an OpenAI-compatible API, set the environment variables shown in `.env.example`, then omit `--offline`:
+To run against an OpenAI-compatible API, copy the example environment file, add your credentials, load it into the current shell, and omit `--offline`:
 
-```powershell
-$env:OPENAI_API_KEY = "..."
-$env:OPENAI_API_BASE = "https://your-api-base/v1"
-uv run research-agent "What methods are being used to accelerate vision transformers on edge GPUs?"
+```bash
+cp .env.example .env
+# Edit .env and replace the placeholder values.
+set -a
+source .env
+set +a
+
+uv run research-agent \
+  "What methods are being used to accelerate vision transformers on edge GPUs?"
 ```
+
+The application reads configuration from environment variables; it does not load `.env` automatically. The `.env` file is ignored by Git and should never contain credentials you intend to commit.
 
 ## Validate
 
-```powershell
+```bash
 uv run pytest
 ```
 
