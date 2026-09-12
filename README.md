@@ -8,14 +8,30 @@ The current implementation contains a bounded, inspectable agent loop. A languag
 
 The bundled paper catalog is intentionally mocked for the first lesson. It will be replaced with provider-neutral adapters for real sources in the next stage.
 
-## Run on Windows with WSL
+## Set up with uv
 
-Use a WSL 2 Linux distribution and keep the repository in its Linux filesystem (for example, `~/projects/ai_agent_demo`) instead of under `/mnt/c`. This generally gives development tools and Git better file-system performance.
+This project uses [uv](https://docs.astral.sh/uv/) to install Python and manage project dependencies. The commands in this section work in the standard POSIX shell environments on **macOS**, **Ubuntu**, and **Windows Subsystem for Linux (WSL 2)**.
 
-Install Python 3.11 or later and [uv](https://docs.astral.sh/uv/) inside WSL. Then, from the repository root, synchronize the dependencies and run the deterministic demonstration:
+Install `uv` if it is not already available, then restart the terminal so that the installer can add `uv` to your `PATH`:
 
 ```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Clone the repository into your home directory, enter it, install a supported Python version, and synchronize the project environment. Python 3.11 or later is required.
+
+```bash
+git clone https://github.com/leizhipeng/ai_agent_demo.git
+cd ai_agent_demo
+uv python install 3.11
 uv sync --all-groups
+```
+
+On WSL 2, keep the checkout in the Linux filesystem (for example, `~/projects/ai_agent_demo`) rather than under `/mnt/c`. This generally gives development tools and Git better file-system performance.
+
+Run the deterministic offline demonstration:
+
+```bash
 uv run python experiments/manual_agent/main.py --offline \
   "What methods are being used to accelerate vision transformers on edge GPUs?"
 ```
