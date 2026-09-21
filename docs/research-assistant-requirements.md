@@ -12,7 +12,7 @@ The assistant must treat research as a process rather than as a single conversat
 
 ## 2. Scope and operating assumptions
 
-The project is a Python application managed with `uv` and intended to run on Windows. It uses an OpenAI-compatible language-model API, but the core domain model must not depend on a single model provider or framework. The initial target is literature research in technical fields, particularly areas where source quality, recency, and traceability matter.
+The project is a cross-platform Python application managed with `uv`, with macOS as the primary development environment and Ubuntu/WSL 2 also supported. It uses an OpenAI-compatible language-model API, but the core domain model must not depend on a single model provider or framework. The initial target is literature research in technical fields, particularly areas where source quality, recency, and traceability matter.
 
 The first complete version is a personal or portfolio-scale research system. It prioritizes **correctness of workflow, source traceability, reproducibility, and observability** over large-scale corpus processing. Enterprise multi-tenancy, a broad web frontend, and massive-scale indexing are explicitly outside the initial scope unless later requirements add them.
 
@@ -177,7 +177,7 @@ The assistant must use approved tools with least privilege. Read-only retrieval 
 
 | Identifier | Requirement | Acceptance criterion | Status |
 |---|---|---|---|
-| NFR-15 | The application must be installable and runnable on supported Windows environments through `uv`. | A new developer can synchronize dependencies and execute the documented tests and example command from PowerShell. | Partially implemented |
+| NFR-15 | The application must be installable and runnable on supported macOS environments through `uv`. | A new developer can bootstrap the environment and execute the documented tests and example command from the standard macOS Terminal. | Implemented |
 | NFR-16 | Configuration must be externalized. | Secrets, endpoints, model choices, limits, and provider settings are supplied through environment or configuration, not source code. | Implemented |
 | NFR-17 | The implementation must separate domain models, tools/adapters, orchestration, persistence, and presentation. | A provider or orchestration replacement does not require broad changes to unrelated components. | Partially implemented |
 | NFR-18 | Public interfaces and important design decisions must be documented. | Documentation explains interfaces, assumptions, configuration, reliability policy, and known limitations. | Partially implemented |

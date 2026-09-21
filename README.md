@@ -8,26 +8,17 @@ The current implementation contains a bounded, inspectable agent loop. A languag
 
 The bundled paper catalog is intentionally mocked for the first lesson. It will be replaced with provider-neutral adapters for real sources in the next stage.
 
-## Set up with uv
+## Setup
 
-This project uses [uv](https://docs.astral.sh/uv/) to install Python and manage project dependencies. The commands in this section work in the standard POSIX shell environments on **macOS**, **Ubuntu**, and **Windows Subsystem for Linux (WSL 2)**.
+This project uses [uv](https://docs.astral.sh/uv/) to install Python and manage dependencies.
 
-Install `uv` if it is not already available, then restart the terminal so that the installer can add `uv` to your `PATH`:
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-Clone the repository into your home directory, enter it, install a supported Python version, and synchronize the project environment. Python 3.11 or later is required.
+From the repository root, run the bootstrap script. It installs Python 3.13, creates the local `.venv`, installs the locked development dependencies, creates `.env` if needed, and runs the tests:
 
 ```bash
-git clone https://github.com/leizhipeng/ai_agent_demo.git
-cd ai_agent_demo
-uv python install 3.11
-uv sync --all-groups
+./scripts/setup-macos.sh
 ```
 
-On WSL 2, keep the checkout in the Linux filesystem (for example, `~/projects/ai_agent_demo`) rather than under `/mnt/c`. This generally gives development tools and Git better file-system performance.
+### Run offline
 
 Run the deterministic offline demonstration:
 
@@ -36,11 +27,11 @@ uv run python experiments/manual_agent/main.py --offline \
   "What methods are being used to accelerate vision transformers on edge GPUs?"
 ```
 
-To run against an OpenAI-compatible API, copy the example environment file, add your credentials, load it into the current shell, and omit `--offline`:
+### Run with an API
+
+Edit `.env` and replace the API-key placeholder. For the normal OpenAI API, leave `OPENAI_BASE_URL` commented out. Set it only when using a compatible proxy or another provider. Load the values into the current zsh session, then omit `--offline`:
 
 ```bash
-cp .env.example .env
-# Edit .env and replace the placeholder values.
 set -a
 source .env
 set +a
@@ -49,7 +40,18 @@ uv run research-agent \
   "What methods are being used to accelerate vision transformers on edge GPUs?"
 ```
 
-The application reads configuration from environment variables; it does not load `.env` automatically. The `.env` file is ignored by Git and should never contain credentials you intend to commit.
+The application reads configuration from environment variables; it does not load `.env` automatically. When you open a new Terminal window, run the three environment-loading commands again before a live API run. Offline runs do not require `.env`.
+
+## Manual setup and other POSIX systems
+
+The project remains compatible with Ubuntu and WSL 2. Without the macOS bootstrap script, the equivalent setup is:
+
+```bash
+uv python install
+uv sync --all-groups --locked
+cp .env.example .env
+uv run pytest
+```
 
 ## Validate
 
