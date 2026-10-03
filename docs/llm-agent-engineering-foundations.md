@@ -31,29 +31,29 @@ The loop may involve zero, one, or many tool calls. It must be controlled by app
 
 ## Core concepts at a glance
 
-| Concept | Definition | Primary design question |
-|---|---|---|
-| LLM messages | The ordered input records given to a model for one turn. | Which information must the model see now? |
-| System instructions | Developer-controlled behavior and operating rules for the model. | What role, limits, and decision policy should govern this run? |
-| Tool calling | A model request for an application-owned capability. | Which capabilities should be available, and under what constraints? |
-| Tool schema | A machine-readable contract for a tool’s name, purpose, and parameters. | Can the model invoke this tool correctly and safely? |
-| Observation | The tool result or other external feedback returned to the model. | Is the result sufficient, truthful, bounded, and traceable? |
-| Reasoning/action loop | Repeated model decisions and tool executions toward a goal. | How does the run make progress rather than repeat itself? |
-| Termination conditions | Application-enforced rules that end, pause, or fail a run. | When must the system stop regardless of the model’s preference? |
-| Structured output | A response constrained to a declared schema. | Which results are data contracts rather than prose? |
-| Context | The information and capabilities supplied for a particular model decision. | What is the smallest complete input for a reliable decision? |
-| State | Durable facts accumulated and updated during a workflow. | What must survive across turns, nodes, failures, and restarts? |
+| Concept                | Definition                                                                 | Primary design question                                             |
+|------------------------|:---------------------------------------------------------------------------|---------------------------------------------------------------------|
+| LLM messages           | The ordered input records given to a model for one turn.                   | Which information must the model see now?                           |
+| System instructions    | Developer-controlled behavior and operating rules for the model.           | What role, limits, and decision policy should govern this run?      |
+| Tool calling           | A model request for an application-owned capability.                       | Which capabilities should be available, and under what constraints? |
+| Tool schema            | A machine-readable contract for a tool’s name, purpose, and parameters.    | Can the model invoke this tool correctly and safely?                |
+| Observation            | The tool result or other external feedback returned to the model.          | Is the result sufficient, truthful, bounded, and traceable?         |
+| Reasoning/action loop  | Repeated model decisions and tool executions toward a goal.                | How does the run make progress rather than repeat itself?           |
+| Termination conditions | Application-enforced rules that end, pause, or fail a run.                 | When must the system stop regardless of the model’s preference?     |
+| Structured output      | A response constrained to a declared schema.                               | Which results are data contracts rather than prose?                 |
+| Context                | The information and capabilities supplied for a particular model decision. | What is the smallest complete input for a reliable decision?        |
+| State                  | Durable facts accumulated and updated during a workflow.                   | What must survive across turns, nodes, failures, and restarts?      |
 
 ## LLM messages: the conversational protocol
 
 A **message** is a typed record in the interaction protocol between an application and a model. Although exact field names differ across APIs, a tool-using conversation generally includes system, user, assistant, and tool messages.
 
-| Message type | Origin | Purpose | Example content |
-|---|---|---|---|
-| System | Developer or application | Defines behavior, boundaries, and high-level operating policy. | “Use retrieved sources only for factual claims.” |
-| User | End user | States the task, goal, question, or feedback. | “Compare methods for low-latency vision inference.” |
-| Assistant | Model | Contains natural-language output and/or tool-call requests. | A request to search a scholarly index. |
-| Tool | Application | Returns the result of one particular tool call. | Normalized search records, an error, or an approval request. |
+| Message type | Origin                   | Purpose                                                        | Example content                                              |
+|--------------|--------------------------|----------------------------------------------------------------|--------------------------------------------------------------|
+| System       | Developer or application | Defines behavior, boundaries, and high-level operating policy. | “Use retrieved sources only for factual claims.”             |
+| User         | End user                 | States the task, goal, question, or feedback.                  | “Compare methods for low-latency vision inference.”          |
+| Assistant    | Model                    | Contains natural-language output and/or tool-call requests.    | A request to search a scholarly index.                       |
+| Tool         | Application              | Returns the result of one particular tool call.                | Normalized search records, an error, or an approval request. |
 
 Message ordering is meaningful. A tool response is not a generic note. It is an answer to a specific assistant tool call. When multiple tools are requested in one turn, each response must retain the identifier of the corresponding request. This pairing preserves causal history and lets the model correctly interpret parallel or repeated operations. [1]
 
@@ -65,14 +65,14 @@ Messages are often treated as “memory,” but raw history is not a complete me
 
 Good instructions are concrete and testable. They describe a decision policy instead of relying on vague aspirations. For example, “use a search tool before making time-sensitive claims; cite only retrieved sources; state uncertainty when evidence is unavailable; do not execute a write operation without confirmation” gives the model operational guidance. “Be accurate and helpful” is useful as tone, but it does not specify reliable behavior.
 
-| Instruction component | What it controls | Reliable form |
-|---|---|---|
-| Role and objective | The kind of work the model performs. | “Act as a literature research assistant.” |
-| Grounding policy | Permitted evidence for factual claims. | “Base claims on tool results available in this run.” |
-| Tool policy | When and how tools are used. | “Search before answering questions about recent papers.” |
-| Output policy | Format, audience, uncertainty, and citation behavior. | “Return an evidence table and mark unsupported claims.” |
-| Safety and authority | Prohibited behavior and approval requirements. | “Never perform a persistent write without explicit approval.” |
-| Completion policy | What a satisfactory outcome looks like. | “Finish after each subquestion has evidence or is explicitly unresolved.” |
+| Instruction component | What it controls                                      | Reliable form                                                             |
+|-----------------------|-------------------------------------------------------|---------------------------------------------------------------------------|
+| Role and objective    | The kind of work the model performs.                  | “Act as a literature research assistant.”                                 |
+| Grounding policy      | Permitted evidence for factual claims.                | “Base claims on tool results available in this run.”                      |
+| Tool policy           | When and how tools are used.                          | “Search before answering questions about recent papers.”                  |
+| Output policy         | Format, audience, uncertainty, and citation behavior. | “Return an evidence table and mark unsupported claims.”                   |
+| Safety and authority  | Prohibited behavior and approval requirements.        | “Never perform a persistent write without explicit approval.”             |
+| Completion policy     | What a satisfactory outcome looks like.               | “Finish after each subquestion has evidence or is explicitly unresolved.” |
 
 Instructions should be versioned and evaluated as production assets. Small wording changes can affect routing, grounding, cost, and safety. They should not contain credentials, broad untrusted input, or detailed data that is already better represented as a tool result or a state field.
 
@@ -90,14 +90,14 @@ Tool use must be treated as untrusted input. The model can choose an unavailable
 
 A **tool schema** defines a tool’s interface in a format the model can use. For function tools, the contract usually contains a clear name, a concise behavior-oriented description, an object schema for arguments, required fields, allowed value types, and a rule that undeclared properties are rejected.
 
-| Schema element | Engineering role | Design guidance |
-|---|---|---|
-| Name | Stable programmatic identity. | Use an action-oriented, unambiguous name such as `search_papers`. |
-| Description | The primary natural-language routing signal. | State what the tool does, what it does not do, and when it is appropriate. |
-| Parameters | Typed input contract. | Use meaningful field names, descriptions, ranges, and enumerations. |
-| Required fields | Minimum valid request. | Require the fields necessary for a safe, useful execution. |
-| Extra-field policy | Defense against silent changes in behavior. | Reject undeclared fields for strict structured interfaces. |
-| Result contract | The observation structure returned after execution. | Normalize useful output and include provenance, status, and errors. |
+| Schema element     | Engineering role                                    | Design guidance                                                            |
+|--------------------|-----------------------------------------------------|----------------------------------------------------------------------------|
+| Name               | Stable programmatic identity.                       | Use an action-oriented, unambiguous name such as `search_papers`.          |
+| Description        | The primary natural-language routing signal.        | State what the tool does, what it does not do, and when it is appropriate. |
+| Parameters         | Typed input contract.                               | Use meaningful field names, descriptions, ranges, and enumerations.        |
+| Required fields    | Minimum valid request.                              | Require the fields necessary for a safe, useful execution.                 |
+| Extra-field policy | Defense against silent changes in behavior.         | Reject undeclared fields for strict structured interfaces.                 |
+| Result contract    | The observation structure returned after execution. | Normalize useful output and include provenance, status, and errors.        |
 
 A schema should make the correct action easy and the incorrect action difficult. A tool that combines search, database writes, web scraping, and report publication into one ambiguous interface is difficult for a model to route, difficult to secure, and difficult to evaluate. Prefer small tools with one responsibility and an explicit side-effect boundary.
 
@@ -109,13 +109,13 @@ An **observation** is information returned to the model after an action. A datab
 
 An observation should be **relevant, bounded, structured, and attributable**. Returning hundreds of raw search records can dilute the useful evidence and spend prompt tokens. Returning only “search succeeded” leaves the model unable to reason about the result. A good search observation contains a bounded list of normalized records, source identifiers, a query, metadata that supports ranking, and a clear statement if no results were found.
 
-| Observation quality | Reliable behavior | Failure mode when absent |
-|---|---|---|
-| Relevance | Include information needed for the next decision. | The model guesses or issues redundant calls. |
-| Provenance | Identify source, timestamp, record IDs, and query where appropriate. | Claims cannot be audited or verified. |
-| Bounded size | Limit results and summarize large payloads. | Context becomes expensive and attention degrades. |
-| Structural clarity | Use a stable data contract. | The model misreads data or downstream code cannot consume it. |
-| Error transparency | Return actionable errors as tool results when recovery is possible. | The model hallucinates success or the run crashes prematurely. |
+| Observation quality | Reliable behavior                                                    | Failure mode when absent                                       |
+|---------------------|----------------------------------------------------------------------|----------------------------------------------------------------|
+| Relevance           | Include information needed for the next decision.                    | The model guesses or issues redundant calls.                   |
+| Provenance          | Identify source, timestamp, record IDs, and query where appropriate. | Claims cannot be audited or verified.                          |
+| Bounded size        | Limit results and summarize large payloads.                          | Context becomes expensive and attention degrades.              |
+| Structural clarity  | Use a stable data contract.                                          | The model misreads data or downstream code cannot consume it.  |
+| Error transparency  | Return actionable errors as tool results when recovery is possible.  | The model hallucinates success or the run crashes prematurely. |
 
 A tool error is often a valid observation. For example, “provider timed out; no records returned; retry after 30 seconds” lets the agent select another source or report an incomplete result. An internal invariant violation or corrupt workflow state is different: it should normally halt or fail the run rather than invite the model to improvise around an application bug.
 
@@ -127,27 +127,27 @@ A single tool call does not make a good agent. The loop becomes agentic when it 
 
 The loop should be designed around progress. Every iteration should either reduce uncertainty, acquire a required artifact, satisfy a coverage criterion, surface a recoverable constraint, or end the run. When an iteration does none of these, the system needs a guardrail: perhaps duplicate-call detection, better tool descriptions, a smaller context, or a termination rule.
 
-| Loop stage | Model decision | Application responsibility | Record to retain |
-|---|---|---|---|
-| Prepare | Interpret goal and available information. | Assemble the minimum relevant context. | Prompt version and context summary. |
-| Decide | Answer, call tool, delegate, request clarification, or pause. | Check that the requested transition is allowed. | Model response and selected action. |
-| Validate | Supply arguments or a structured result. | Validate schema, authority, and policy. | Validated request or validation failure. |
-| Execute | None. | Invoke bounded capability with timeouts and retries where appropriate. | Status, latency, provider metadata, result reference. |
-| Observe | Interpret the returned result. | Attach result to the correct request and update state. | Observation and provenance. |
-| Evaluate progress | Decide whether another step is needed. | Apply deterministic limits and quality gates. | Metrics, coverage status, termination reason. |
+| Loop stage        | Model decision                                                | Application responsibility                                             | Record to retain                                      |
+|-------------------|---------------------------------------------------------------|------------------------------------------------------------------------|-------------------------------------------------------|
+| Prepare           | Interpret goal and available information.                     | Assemble the minimum relevant context.                                 | Prompt version and context summary.                   |
+| Decide            | Answer, call tool, delegate, request clarification, or pause. | Check that the requested transition is allowed.                        | Model response and selected action.                   |
+| Validate          | Supply arguments or a structured result.                      | Validate schema, authority, and policy.                                | Validated request or validation failure.              |
+| Execute           | None.                                                         | Invoke bounded capability with timeouts and retries where appropriate. | Status, latency, provider metadata, result reference. |
+| Observe           | Interpret the returned result.                                | Attach result to the correct request and update state.                 | Observation and provenance.                           |
+| Evaluate progress | Decide whether another step is needed.                        | Apply deterministic limits and quality gates.                          | Metrics, coverage status, termination reason.         |
 
 ## Termination conditions: stopping is engineered
 
 An LLM must not be the only authority that decides when an agent stops. A model can continue calling a tool because it is uncertain, because a forced tool choice persists, because an observation is unclear, or because it has entered a repetitive pattern. The application needs explicit, measurable termination conditions.
 
-| Condition type | Examples | Why it exists |
-|---|---|---|
-| Success condition | All required fields are present; every research subquestion is addressed or declared unresolved. | Defines useful completion rather than merely a fluent response. |
-| Step and loop bounds | Maximum model calls, tool calls, search rounds, or repeated-action count. | Prevents infinite or low-value loops. |
-| Resource budget | Maximum cost, tokens, wall-clock time, API calls, or documents processed. | Makes the system operationally predictable. |
-| Error threshold | Maximum retries; non-retryable schema or authorization failure. | Stops unrecoverable or harmful repetition. |
-| Human approval gate | Request confirmation before processing a large corpus or executing a write. | Keeps consequential decisions under user control. |
-| Cancellation and deadline | User cancellation, expired job deadline, shutdown signal. | Preserves user control and system health. |
+| Condition type            | Examples                                                                                         | Why it exists                                                   |
+|---------------------------|--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| Success condition         | All required fields are present; every research subquestion is addressed or declared unresolved. | Defines useful completion rather than merely a fluent response. |
+| Step and loop bounds      | Maximum model calls, tool calls, search rounds, or repeated-action count.                        | Prevents infinite or low-value loops.                           |
+| Resource budget           | Maximum cost, tokens, wall-clock time, API calls, or documents processed.                        | Makes the system operationally predictable.                     |
+| Error threshold           | Maximum retries; non-retryable schema or authorization failure.                                  | Stops unrecoverable or harmful repetition.                      |
+| Human approval gate       | Request confirmation before processing a large corpus or executing a write.                      | Keeps consequential decisions under user control.               |
+| Cancellation and deadline | User cancellation, expired job deadline, shutdown signal.                                        | Preserves user control and system health.                       |
 
 Termination should produce a first-class outcome: **completed**, **paused awaiting input**, **halted by policy**, **cancelled**, or **failed**. “No answer” is not a sufficient operational status. A durable run record identifies the exact termination reason and the artifacts gathered before termination.
 
@@ -157,13 +157,13 @@ Termination should produce a first-class outcome: **completed**, **paused awaiti
 
 Structured Outputs can enforce adherence to a supplied JSON Schema, including required keys and permitted enum values. This is stronger than asking the model to “respond in JSON,” but it does not make the contents factually correct. A schema can ensure a `confidence` field is a number in the expected position; it cannot ensure that the number is calibrated or that an extracted claim is supported by evidence. [4]
 
-| Requirement | Prompted JSON | Schema-constrained output | Application validation |
-|---|---|---|---|
-| Produces parseable JSON | Often, but not guaranteed. | Designed to do so, subject to refusal or incompleteness. | Always required at the trust boundary. |
-| Includes required keys | Not guaranteed. | Enforced by the supported schema subset. | Confirm business invariants. |
-| Respects types and enums | Not guaranteed. | Enforced by the schema. | Validate provider response and domain constraints. |
-| Is factually grounded | Not guaranteed. | Not guaranteed. | Check against sources and evidence. |
-| Is authorized or safe | Not guaranteed. | Not guaranteed. | Apply policy and permission checks. |
+| Requirement              | Prompted JSON              | Schema-constrained output                                | Application validation                             |
+|--------------------------|----------------------------|----------------------------------------------------------|----------------------------------------------------|
+| Produces parseable JSON  | Often, but not guaranteed. | Designed to do so, subject to refusal or incompleteness. | Always required at the trust boundary.             |
+| Includes required keys   | Not guaranteed.            | Enforced by the supported schema subset.                 | Confirm business invariants.                       |
+| Respects types and enums | Not guaranteed.            | Enforced by the schema.                                  | Validate provider response and domain constraints. |
+| Is factually grounded    | Not guaranteed.            | Not guaranteed.                                          | Check against sources and evidence.                |
+| Is authorized or safe    | Not guaranteed.            | Not guaranteed.                                          | Apply policy and permission checks.                |
 
 A schema-constrained call can still fail because the model refuses, output is cut off, the provider rejects an unsupported schema, or the returned content cannot be trusted semantically. Every structured-output path needs an explicit refusal and incomplete-response policy. Strict schemas also have provider-specific limits; for example, nested object depth and unsupported JSON Schema keywords may be constrained. [4]
 
@@ -173,14 +173,14 @@ A schema-constrained call can still fail because the model refuses, output is cu
 
 Context is not synonymous with conversation history. It is a curated view. The full history may contain important facts but also irrelevant discussion, repeated tool payloads, superseded plans, and secrets that should never reach the model. An agent should construct context from explicit sources rather than indiscriminately replay every event.
 
-| Context source | Scope | Typical content | Handling principle |
-|---|---|---|---|
-| System instructions | Run or agent scope | Role, policy, tool-use rules, completion standards. | Stable, versioned, and concise. |
-| Recent messages | Turn scope | Latest user request, questions, and tool observations. | Keep causal order; summarize obsolete detail. |
-| Workflow state | Run scope | Plan, selected papers, evidence coverage, budgets. | Select only fields needed by this node. |
-| Long-term store | Cross-run scope | User preferences, saved research artifacts, prior conclusions. | Retrieve deliberately; do not blindly inject. |
-| Runtime context | Execution scope | User identity, tenant, permissions, API clients, configuration. | Supply to tools and application logic; never expose secrets to the model. |
-| Tool definitions | Turn scope | Available action interfaces. | Offer only relevant, permitted tools. |
+| Context source      | Scope              | Typical content                                                 | Handling principle                                                        |
+|---------------------|--------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------|
+| System instructions | Run or agent scope | Role, policy, tool-use rules, completion standards.             | Stable, versioned, and concise.                                           |
+| Recent messages     | Turn scope         | Latest user request, questions, and tool observations.          | Keep causal order; summarize obsolete detail.                             |
+| Workflow state      | Run scope          | Plan, selected papers, evidence coverage, budgets.              | Select only fields needed by this node.                                   |
+| Long-term store     | Cross-run scope    | User preferences, saved research artifacts, prior conclusions.  | Retrieve deliberately; do not blindly inject.                             |
+| Runtime context     | Execution scope    | User identity, tenant, permissions, API clients, configuration. | Supply to tools and application logic; never expose secrets to the model. |
+| Tool definitions    | Turn scope         | Available action interfaces.                                    | Offer only relevant, permitted tools.                                     |
 
 The right context is often the biggest determinant of agent reliability. More tokens are not automatically more helpful. Good context reduces ambiguity, shows the model the evidence it needs, exposes only applicable actions, and leaves enough space for the model’s response.
 
@@ -190,11 +190,11 @@ The right context is often the biggest determinant of agent reliability. More to
 
 A useful distinction separates three data scopes.
 
-| Data scope | Lifetime | Examples | Where it belongs |
-|---|---|---|---|
-| Runtime context | One execution environment | API clients, credential handles, logger, tenant permissions, feature flags. | Dependency injection or runtime container. |
-| Workflow state | One agent run or conversation | Question, plan, selected papers, tool trace, approvals, current stage, counters. | Typed state object and checkpoint store. |
-| Long-term store | Across runs | Persisted evidence, user preferences, historical evaluation baselines, saved reports. | Database, object store, or dedicated memory service. |
+| Data scope      | Lifetime                      | Examples                                                                              | Where it belongs                                     |
+|-----------------|-------------------------------|---------------------------------------------------------------------------------------|------------------------------------------------------|
+| Runtime context | One execution environment     | API clients, credential handles, logger, tenant permissions, feature flags.           | Dependency injection or runtime container.           |
+| Workflow state  | One agent run or conversation | Question, plan, selected papers, tool trace, approvals, current stage, counters.      | Typed state object and checkpoint store.             |
+| Long-term store | Across runs                   | Persisted evidence, user preferences, historical evaluation baselines, saved reports. | Database, object store, or dedicated memory service. |
 
 A field belongs in workflow state when a later decision, user, evaluator, or recovery process needs it. A field does not belong there merely because it was once available. Large raw documents, credentials, transient HTTP clients, and redundant derived fields usually increase serialization cost and make checkpointing fragile. Instead, state can keep durable identifiers and references to externally stored content.
 
@@ -212,30 +212,30 @@ For a literature-research workflow, the current search plan, selected source ide
 
 Before adding a capability, review its interface and lifecycle against these questions.
 
-| Design area | Questions to answer |
-|---|---|
-| Goal | What concrete artifact or decision marks success? |
-| Instructions | What should the model do, avoid, and disclose? |
-| Tools | What is the smallest useful tool set? Which tools have side effects? |
-| Schemas | Which input and output fields are required, constrained, and versioned? |
-| Validation | What happens when arguments are malformed, unauthorized, or semantically invalid? |
-| Observations | How will results preserve provenance, errors, size bounds, and causal linkage? |
-| State | Which facts must survive another turn, a retry, and a restart? Who owns each field? |
-| Context | Which state fields, messages, tools, and instructions are necessary for this one decision? |
-| Termination | What success, budget, loop, error, and approval policies stop the run? |
-| Evaluation | Which traces and metrics reveal whether this capability improved the workflow? |
+| Design area  | Questions to answer                                                                        |
+|--------------|--------------------------------------------------------------------------------------------|
+| Goal         | What concrete artifact or decision marks success?                                          |
+| Instructions | What should the model do, avoid, and disclose?                                             |
+| Tools        | What is the smallest useful tool set? Which tools have side effects?                       |
+| Schemas      | Which input and output fields are required, constrained, and versioned?                    |
+| Validation   | What happens when arguments are malformed, unauthorized, or semantically invalid?          |
+| Observations | How will results preserve provenance, errors, size bounds, and causal linkage?             |
+| State        | Which facts must survive another turn, a retry, and a restart? Who owns each field?        |
+| Context      | Which state fields, messages, tools, and instructions are necessary for this one decision? |
+| Termination  | What success, budget, loop, error, and approval policies stop the run?                     |
+| Evaluation   | Which traces and metrics reveal whether this capability improved the workflow?             |
 
 ## Common failure patterns and corrective actions
 
-| Failure pattern | Likely cause | Corrective action |
-|---|---|---|
+| Failure pattern                                                | Likely cause                                                                              | Corrective action                                                                                               |
+|----------------------------------------------------------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
 | The model answers from general knowledge instead of searching. | Instructions or tool policy are weak; search is optional without a grounding requirement. | State an explicit grounding policy; use a deterministic pipeline stage or required tool mode where appropriate. |
-| The model repeatedly calls the same tool. | Ambiguous observations, persistent forced tool choice, or no loop guard. | Return clearer status; reset tool choice; detect duplicate requests; enforce step and budget limits. |
-| Tool calls contain unusable arguments. | Schema is vague, tool description is unclear, or validation is missing. | Improve parameter descriptions, constrain types, reject extras, and return actionable validation errors. |
-| The context window fills with raw outputs. | Tool payloads are unbounded and all history is replayed. | Limit results, store large artifacts externally, summarize selectively, and retrieve by relevance. |
-| State becomes inconsistent after retries. | Multiple components mutate fields without ownership or idempotency. | Use explicit transitions, stable identifiers, append-only event records where useful, and idempotent writes. |
-| Valid structured output contains an unsupported claim. | Format validation has been confused with evidence validation. | Link claims to retrieved evidence and run citation or evidence-support checks. |
-| A run appears to succeed after a provider error. | Errors are swallowed or represented as ordinary empty results. | Preserve status, error type, retryability, and provenance in the observation and final outcome. |
+| The model repeatedly calls the same tool.                      | Ambiguous observations, persistent forced tool choice, or no loop guard.                  | Return clearer status; reset tool choice; detect duplicate requests; enforce step and budget limits.            |
+| Tool calls contain unusable arguments.                         | Schema is vague, tool description is unclear, or validation is missing.                   | Improve parameter descriptions, constrain types, reject extras, and return actionable validation errors.        |
+| The context window fills with raw outputs.                     | Tool payloads are unbounded and all history is replayed.                                  | Limit results, store large artifacts externally, summarize selectively, and retrieve by relevance.              |
+| State becomes inconsistent after retries.                      | Multiple components mutate fields without ownership or idempotency.                       | Use explicit transitions, stable identifiers, append-only event records where useful, and idempotent writes.    |
+| Valid structured output contains an unsupported claim.         | Format validation has been confused with evidence validation.                             | Link claims to retrieved evidence and run citation or evidence-support checks.                                  |
+| A run appears to succeed after a provider error.               | Errors are swallowed or represented as ordinary empty results.                            | Preserve status, error type, retryability, and provenance in the observation and final outcome.                 |
 
 ## How these concepts fit together
 
@@ -245,14 +245,14 @@ A framework should be chosen only after this chain is clear. A handwritten loop 
 
 ## Recommended study exercises
 
-| Exercise | Learning objective | Evidence of understanding |
-|---|---|---|
-| Trace a single tool call end to end. | Distinguish model request, application execution, observation, and final response. | Explain each message and its originating component. |
-| Design two tool schemas for the same task. | Learn how names, descriptions, and input constraints affect routing. | Defend why one interface is safer and easier to evaluate. |
-| Convert a prose research plan into a structured-output contract. | Separate format reliability from factual reliability. | Identify semantic checks that remain necessary after schema validation. |
-| Audit a workflow state object. | Distinguish context, state, and long-term storage. | Move credentials, large raw payloads, and derived fields to more appropriate locations. |
-| Simulate a non-converging loop. | Design deterministic termination. | Show the exact recorded status and reason after the limit is reached. |
-| Compare a raw tool result with a normalized observation. | Understand grounding and context size. | Identify source IDs, errors, ranking data, and irrelevant fields. |
+| Exercise                                                         | Learning objective                                                                 | Evidence of understanding                                                               |
+|------------------------------------------------------------------|------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| Trace a single tool call end to end.                             | Distinguish model request, application execution, observation, and final response. | Explain each message and its originating component.                                     |
+| Design two tool schemas for the same task.                       | Learn how names, descriptions, and input constraints affect routing.               | Defend why one interface is safer and easier to evaluate.                               |
+| Convert a prose research plan into a structured-output contract. | Separate format reliability from factual reliability.                              | Identify semantic checks that remain necessary after schema validation.                 |
+| Audit a workflow state object.                                   | Distinguish context, state, and long-term storage.                                 | Move credentials, large raw payloads, and derived fields to more appropriate locations. |
+| Simulate a non-converging loop.                                  | Design deterministic termination.                                                  | Show the exact recorded status and reason after the limit is reached.                   |
+| Compare a raw tool result with a normalized observation.         | Understand grounding and context size.                                             | Identify source IDs, errors, ranking data, and irrelevant fields.                       |
 
 ## References
 
