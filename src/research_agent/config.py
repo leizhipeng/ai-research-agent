@@ -22,6 +22,9 @@ class Settings(BaseModel):
     max_steps: int = Field(default=5, ge=1, le=20)
     max_search_results: int = Field(default=5, ge=1, le=20)
     request_timeout_seconds: float = Field(default=45.0, gt=0, le=300)
+    openalex_api_key: SecretStr | None = None
+    json_mode: bool = False
+    max_output_tokens: int = Field(default=2400, ge=200, le=8000)
 
     @classmethod
     def from_environment(cls) -> "Settings":
@@ -33,9 +36,15 @@ class Settings(BaseModel):
             max_steps=int(os.getenv("RESEARCH_AGENT_MAX_STEPS", "5")),
             max_search_results=int(os.getenv("RESEARCH_AGENT_MAX_SEARCH_RESULTS", "5")),
             request_timeout_seconds=float(os.getenv("RESEARCH_AGENT_TIMEOUT_SECONDS", "45")),
+            openalex_api_key=os.getenv("OPENALEX_API_KEY"),
+            json_mode=os.getenv("RESEARCH_AGENT_JSON_MODE", "false").lower() == "true",
+            max_output_tokens=int(os.getenv("RESEARCH_AGENT_MAX_OUTPUT_TOKENS", "2400")),
         )
 
     @property
     def is_llm_configured(self) -> bool:
         """Return whether an API key is available without exposing the secret."""
-        return self.api_key is not None and bool(self.api_key.get_secret_value())
+        return self.api_key is not None and self.api_key.get_secret_value() not in {
+            "",
+            "replace-with-your-api-key",
+        }

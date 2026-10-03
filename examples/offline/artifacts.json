@@ -1,0 +1,1001 @@
+{
+  "run": {
+    "run_id": "research-869255844c3b",
+    "request": {
+      "question": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+      "scope": "",
+      "mode": "offline",
+      "limits": {
+        "max_rounds": 2,
+        "max_papers": 6,
+        "results_per_query": 4,
+        "max_queries": 3,
+        "max_model_calls": 24,
+        "max_tokens": 100000,
+        "max_seconds": 300.0,
+        "max_http_requests": 30,
+        "max_download_bytes": 12000000,
+        "concurrency": 2
+      },
+      "pause_after_plan": false,
+      "full_text": false,
+      "providers": [
+        "arxiv",
+        "openalex"
+      ]
+    },
+    "status": "partial",
+    "stage": "report",
+    "reason": "Synthetic examples demonstrate the workflow; research conclusions remain unresolved. Stopped at configured rounds/papers or no useful new query; unresolved scope is disclosed.",
+    "control": "continue",
+    "created_at": 1791004947.179344,
+    "active_seconds": 0.023698806762695312,
+    "session_started": null,
+    "usage": {
+      "model_calls": 10,
+      "tokens": 0,
+      "reserved_tokens": 0,
+      "http_requests": 0,
+      "download_bytes": 0,
+      "cache_hits": 0
+    }
+  },
+  "artifacts": {
+    "analyses": {
+      "synthetic:pruning": {
+        "content_level": "abstract",
+        "window_start": 0,
+        "window_end": 405,
+        "truncated": false,
+        "analysis": {
+          "problem": "",
+          "method": "",
+          "datasets": [],
+          "metrics": [],
+          "limitations": [],
+          "evidence": [
+            {
+              "claim": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+              "quote": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+              "subquestion": 0
+            }
+          ]
+        }
+      },
+      "synthetic:quantization": {
+        "content_level": "abstract",
+        "window_start": 0,
+        "window_end": 423,
+        "truncated": false,
+        "analysis": {
+          "problem": "",
+          "method": "",
+          "datasets": [],
+          "metrics": [],
+          "limitations": [],
+          "evidence": [
+            {
+              "claim": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+              "quote": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+              "subquestion": 0
+            }
+          ]
+        }
+      },
+      "synthetic:setup": {
+        "content_level": "abstract",
+        "window_start": 0,
+        "window_end": 445,
+        "truncated": false,
+        "analysis": {
+          "problem": "",
+          "method": "",
+          "datasets": [],
+          "metrics": [],
+          "limitations": [],
+          "evidence": [
+            {
+              "claim": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+              "quote": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+              "subquestion": 0
+            }
+          ]
+        }
+      }
+    },
+    "citation_checks": [
+      {
+        "evidence_id": "ev-e59ef7c421d8",
+        "source_id": "synthetic:pruning",
+        "claim": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+        "quote": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "Offline substitute accepts only a claim identical to its retained quotation."
+      },
+      {
+        "evidence_id": "ev-428c796bb847",
+        "source_id": "synthetic:quantization",
+        "claim": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+        "quote": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "Offline substitute accepts only a claim identical to its retained quotation."
+      },
+      {
+        "evidence_id": "ev-4ad6c0237525",
+        "source_id": "synthetic:setup",
+        "claim": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+        "quote": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "Offline substitute accepts only a claim identical to its retained quotation."
+      }
+    ],
+    "comparison_checks/1": [],
+    "comparison_checks/2": [
+      {
+        "comparison": {
+          "evidence_ids": [
+            "ev-428c796bb847",
+            "ev-4ad6c0237525"
+          ],
+          "relation": "different_setup",
+          "explanation": "The synthetic Edge-A batch-one latency and Desktop-B batch-size-thirty-two throughput results use different hardware, batch sizes, and metrics; they are not directly comparable."
+        },
+        "supported": true,
+        "reason": "Deterministic classroom rule compares the two known exact excerpts: Edge-A/batch-one/latency versus Desktop-B/batch-thirty-two/throughput. It makes no numerical comparison."
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "ev-e59ef7c421d8",
+        "source_id": "synthetic:pruning",
+        "claim": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+        "quote": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+        "start": 0,
+        "end": 405,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": true,
+        "support_reason": "Offline substitute accepts only a claim identical to its retained quotation."
+      },
+      {
+        "evidence_id": "ev-428c796bb847",
+        "source_id": "synthetic:quantization",
+        "claim": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+        "quote": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+        "start": 0,
+        "end": 423,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": true,
+        "support_reason": "Offline substitute accepts only a claim identical to its retained quotation."
+      },
+      {
+        "evidence_id": "ev-4ad6c0237525",
+        "source_id": "synthetic:setup",
+        "claim": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+        "quote": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+        "start": 0,
+        "end": 445,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": true,
+        "support_reason": "Offline substitute accepts only a claim identical to its retained quotation."
+      }
+    ],
+    "model/analysis/synthetic:pruning": {
+      "problem": "Synthetic classroom example of efficient inference.",
+      "method": "See the exact source statement; deterministic extraction only.",
+      "datasets": [],
+      "metrics": [],
+      "limitations": [
+        "Synthetic abstract; no real experiment."
+      ],
+      "evidence": [
+        {
+          "claim": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+          "quote": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+          "subquestion": 0
+        }
+      ]
+    },
+    "model/analysis/synthetic:quantization": {
+      "problem": "Synthetic classroom example of efficient inference.",
+      "method": "See the exact source statement; deterministic extraction only.",
+      "datasets": [],
+      "metrics": [],
+      "limitations": [
+        "Synthetic abstract; no real experiment."
+      ],
+      "evidence": [
+        {
+          "claim": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+          "quote": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+          "subquestion": 0
+        }
+      ]
+    },
+    "model/analysis/synthetic:setup": {
+      "problem": "Synthetic classroom example of efficient inference.",
+      "method": "See the exact source statement; deterministic extraction only.",
+      "datasets": [],
+      "metrics": [],
+      "limitations": [
+        "Synthetic abstract; no real experiment."
+      ],
+      "evidence": [
+        {
+          "claim": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+          "quote": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+          "subquestion": 0
+        }
+      ]
+    },
+    "model/comparison/2/0": {
+      "supported": true,
+      "reason": "Deterministic classroom rule compares the two known exact excerpts: Edge-A/batch-one/latency versus Desktop-B/batch-thirty-two/throughput. It makes no numerical comparison."
+    },
+    "model/plan": {
+      "objective": "Investigate: How do quantization and pruning affect vision transformer inference on edge GPUs?",
+      "subquestions": [
+        "Which approaches does the supplied corpus describe?",
+        "Are the reported setups comparable, and what remains unknown?"
+      ],
+      "search_queries": [
+        "How do quantization and pruning affect vision transformer inference on edge GPUs?"
+      ],
+      "scope_notes": "No additional scope supplied."
+    },
+    "model/review/1": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The corpus does not establish comparable quantitative performance or deployment applicability."
+      ],
+      "followup_queries": [
+        "vision transformer edge GPU comparable quantization latency setup"
+      ],
+      "comparisons": [],
+      "sufficient": false,
+      "stop_reason": "Synthetic examples demonstrate the workflow; research conclusions remain unresolved."
+    },
+    "model/review/2": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The corpus does not establish comparable quantitative performance or deployment applicability."
+      ],
+      "followup_queries": [],
+      "comparisons": [
+        {
+          "evidence_ids": [
+            "ev-428c796bb847",
+            "ev-4ad6c0237525"
+          ],
+          "relation": "different_setup",
+          "explanation": "The synthetic Edge-A batch-one latency and Desktop-B batch-size-thirty-two throughput results use different hardware, batch sizes, and metrics; they are not directly comparable."
+        }
+      ],
+      "sufficient": false,
+      "stop_reason": "Synthetic examples demonstrate the workflow; research conclusions remain unresolved."
+    },
+    "model/support/ev-428c796bb847": {
+      "supported": true,
+      "reason": "Offline substitute accepts only a claim identical to its retained quotation."
+    },
+    "model/support/ev-4ad6c0237525": {
+      "supported": true,
+      "reason": "Offline substitute accepts only a claim identical to its retained quotation."
+    },
+    "model/support/ev-e59ef7c421d8": {
+      "supported": true,
+      "reason": "Offline substitute accepts only a claim identical to its retained quotation."
+    },
+    "outcome": {
+      "status": "partial",
+      "reason": "Synthetic examples demonstrate the workflow; research conclusions remain unresolved. Stopped at configured rounds/papers or no useful new query; unresolved scope is disclosed."
+    },
+    "plan": {
+      "objective": "Investigate: How do quantization and pruning affect vision transformer inference on edge GPUs?",
+      "subquestions": [
+        "Which approaches does the supplied corpus describe?",
+        "Are the reported setups comparable, and what remains unknown?"
+      ],
+      "search_queries": [
+        "How do quantization and pruning affect vision transformer inference on edge GPUs?"
+      ],
+      "scope_notes": "No additional scope supplied."
+    },
+    "report": {
+      "markdown": "# Research report\n\nRun: `research-869255844c3b` · Outcome: **partial**\n\n**Question:** How do quantization and pruning affect vision transformer inference on edge GPUs?\n\n**Scope:** No additional scope supplied.\n\n**SYNTHETIC OFFLINE DEMONSTRATION.** Papers and statements are invented teaching data. Deterministic model substitutes exercise the workflow. This is not a real literature review.\n\n## Search method\n\nKeyword discovery; deduplication by identifiers and conservative title matching. Ranking uses question word overlap (0.8), recency (0.1), and abstract availability (0.1). Citation counts do not establish relevance or truth.\n\nRound 1: How do quantization and pruning affect vision transformer inference on edge GPUs?\n\n- synthetic: 2 records\n\nRound 2: vision transformer edge GPU comparable quantization latency setup\n\n- synthetic: 1 records\n\n## Findings and direct evidence\n\nStatements below are attributed to retained source text. A support check establishes a bounded textual assessment, not independent experimental validation.\n\n- **ev-e59ef7c421d8** — This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured. [SYNTHETIC: Structured Pruning for Edge Inference](https://example.invalid/synthetic/pruning)\n  - Basis: abstract; retained text characters 0:405; source `synthetic:pruning`.\n  - Exact quotation: This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.\n  - Support assessment: Offline substitute accepts only a claim identical to its retained quotation.\n\n- **ev-428c796bb847** — This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift. [SYNTHETIC: Calibrated Quantization of a Vision Transformer](https://example.invalid/synthetic/quantization)\n  - Basis: abstract; retained text characters 0:423; source `synthetic:quantization`.\n  - Exact quotation: This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.\n  - Support assessment: Offline substitute accepts only a claim identical to its retained quotation.\n\n- **ev-4ad6c0237525** — This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit. [SYNTHETIC: Precision and Batch Size on a Desktop GPU](https://example.invalid/synthetic/setup)\n  - Basis: abstract; retained text characters 0:445; source `synthetic:setup`.\n  - Exact quotation: This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.\n  - Support assessment: Offline substitute accepts only a claim identical to its retained quotation.\n\n## Comparisons and synthesis\n\n- **different_setup**: The synthetic Edge-A batch-one latency and Desktop-B batch-size-thirty-two throughput results use different hardware, batch sizes, and metrics; they are not directly comparable. (evidence: ev-428c796bb847, ev-4ad6c0237525)\n\n## Coverage, gaps and uncertainty\n\n- Addressed within the retrieved evidence: Which approaches does the supplied corpus describe?\n- Unresolved: Are the reported setups comparable, and what remains unknown?\n- The corpus does not establish comparable quantitative performance or deployment applicability.\n\n## Limitations and stopping condition\n\nSynthetic examples demonstrate the workflow; research conclusions remain unresolved. Stopped at configured rounds/papers or no useful new query; unresolved scope is disclosed.\n\nSearches are bounded and do not establish systematic-review completeness. Metadata is not evidence of a result. Abstracts omit experimental detail. Accessible HTML may omit equations/figures and is read through a bounded window. Source statements remain author-reported. Model support judgments can be wrong; inspect exact quotations and scope before relying on the report.\n\nLimits: `{'max_rounds': 2, 'max_papers': 6, 'results_per_query': 4, 'max_queries': 3, 'max_model_calls': 24, 'max_tokens': 100000, 'max_seconds': 300.0, 'max_http_requests': 30, 'max_download_bytes': 12000000, 'concurrency': 2}`\n\nUsage: `{'model_calls': 10, 'tokens': 0, 'reserved_tokens': 0, 'http_requests': 0, 'download_bytes': 0, 'cache_hits': 0}`\n\n## References and reading depth\n\n- [SYNTHETIC: Structured Pruning for Edge Inference](https://example.invalid/synthetic/pruning) (year unknown), `synthetic:pruning`; IDs: `{'synthetic': 'pruning'}`; **abstract**. Synthetic educational excerpt and deterministic model substitute; not real research evidence. Analysis read characters 0:405 of 405; reading window truncated: False.\n- [SYNTHETIC: Calibrated Quantization of a Vision Transformer](https://example.invalid/synthetic/quantization) (year unknown), `synthetic:quantization`; IDs: `{'synthetic': 'quantization'}`; **abstract**. Synthetic educational excerpt and deterministic model substitute; not real research evidence. Analysis read characters 0:423 of 423; reading window truncated: False.\n- [SYNTHETIC: Precision and Batch Size on a Desktop GPU](https://example.invalid/synthetic/setup) (year unknown), `synthetic:setup`; IDs: `{'synthetic': 'setup'}`; **abstract**. Synthetic educational excerpt and deterministic model substitute; not real research evidence. Analysis read characters 0:445 of 445; reading window truncated: False.\n",
+      "evidence_ids": [
+        "ev-e59ef7c421d8",
+        "ev-428c796bb847",
+        "ev-4ad6c0237525"
+      ]
+    },
+    "review": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The corpus does not establish comparable quantitative performance or deployment applicability."
+      ],
+      "followup_queries": [],
+      "comparisons": [
+        {
+          "evidence_ids": [
+            "ev-428c796bb847",
+            "ev-4ad6c0237525"
+          ],
+          "relation": "different_setup",
+          "explanation": "The synthetic Edge-A batch-one latency and Desktop-B batch-size-thirty-two throughput results use different hardware, batch sizes, and metrics; they are not directly comparable."
+        }
+      ],
+      "sufficient": false,
+      "stop_reason": "Synthetic examples demonstrate the workflow; research conclusions remain unresolved."
+    },
+    "review/1": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The corpus does not establish comparable quantitative performance or deployment applicability."
+      ],
+      "followup_queries": [
+        "vision transformer edge GPU comparable quantization latency setup"
+      ],
+      "comparisons": [],
+      "sufficient": false,
+      "stop_reason": "Synthetic examples demonstrate the workflow; research conclusions remain unresolved."
+    },
+    "review/2": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The corpus does not establish comparable quantitative performance or deployment applicability."
+      ],
+      "followup_queries": [],
+      "comparisons": [
+        {
+          "evidence_ids": [
+            "ev-428c796bb847",
+            "ev-4ad6c0237525"
+          ],
+          "relation": "different_setup",
+          "explanation": "The synthetic Edge-A batch-one latency and Desktop-B batch-size-thirty-two throughput results use different hardware, batch sizes, and metrics; they are not directly comparable."
+        }
+      ],
+      "sufficient": false,
+      "stop_reason": "Synthetic examples demonstrate the workflow; research conclusions remain unresolved."
+    },
+    "search/811581adbabb7c3ac95e": {
+      "query": "vision transformer edge GPU comparable quantization latency setup",
+      "provider": "synthetic",
+      "round": 2,
+      "sources": [
+        {
+          "source_id": "synthetic:setup",
+          "title": "SYNTHETIC: Precision and Batch Size on a Desktop GPU",
+          "authors": [
+            "Synthetic classroom fixture"
+          ],
+          "year": null,
+          "identifiers": {
+            "synthetic": "setup"
+          },
+          "url": "https://example.invalid/synthetic/setup",
+          "abstract": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+          "providers": [
+            "synthetic"
+          ],
+          "retrievals": [
+            {
+              "provider": "synthetic",
+              "query": "vision transformer edge GPU comparable quantization latency setup",
+              "url": "local:offline-corpus",
+              "retrieved_at": "2026-10-03T00:00:00+00:00",
+              "cache_hit": false
+            }
+          ],
+          "content_level": "abstract",
+          "content": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+          "content_url": "local:offline-corpus#setup",
+          "citations": null,
+          "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+          "score": 0.0,
+          "selection_reasons": []
+        }
+      ],
+      "error": null
+    },
+    "search/d6c87d5812f944d981b4": {
+      "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+      "provider": "synthetic",
+      "round": 1,
+      "sources": [
+        {
+          "source_id": "synthetic:quantization",
+          "title": "SYNTHETIC: Calibrated Quantization of a Vision Transformer",
+          "authors": [
+            "Synthetic classroom fixture"
+          ],
+          "year": null,
+          "identifiers": {
+            "synthetic": "quantization"
+          },
+          "url": "https://example.invalid/synthetic/quantization",
+          "abstract": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+          "providers": [
+            "synthetic"
+          ],
+          "retrievals": [
+            {
+              "provider": "synthetic",
+              "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+              "url": "local:offline-corpus",
+              "retrieved_at": "2026-10-03T00:00:00+00:00",
+              "cache_hit": false
+            }
+          ],
+          "content_level": "abstract",
+          "content": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+          "content_url": "local:offline-corpus#quantization",
+          "citations": null,
+          "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+          "score": 0.0,
+          "selection_reasons": []
+        },
+        {
+          "source_id": "synthetic:pruning",
+          "title": "SYNTHETIC: Structured Pruning for Edge Inference",
+          "authors": [
+            "Synthetic classroom fixture"
+          ],
+          "year": null,
+          "identifiers": {
+            "synthetic": "pruning"
+          },
+          "url": "https://example.invalid/synthetic/pruning",
+          "abstract": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+          "providers": [
+            "synthetic"
+          ],
+          "retrievals": [
+            {
+              "provider": "synthetic",
+              "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+              "url": "local:offline-corpus",
+              "retrieved_at": "2026-10-03T00:00:00+00:00",
+              "cache_hit": false
+            }
+          ],
+          "content_level": "abstract",
+          "content": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+          "content_url": "local:offline-corpus#pruning",
+          "citations": null,
+          "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+          "score": 0.0,
+          "selection_reasons": []
+        }
+      ],
+      "error": null
+    },
+    "search_round/1": {
+      "queries": [
+        "How do quantization and pruning affect vision transformer inference on edge GPUs?"
+      ],
+      "results": [
+        {
+          "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+          "provider": "synthetic",
+          "round": 1,
+          "sources": [
+            {
+              "source_id": "synthetic:quantization",
+              "title": "SYNTHETIC: Calibrated Quantization of a Vision Transformer",
+              "authors": [
+                "Synthetic classroom fixture"
+              ],
+              "year": null,
+              "identifiers": {
+                "synthetic": "quantization"
+              },
+              "url": "https://example.invalid/synthetic/quantization",
+              "abstract": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+              "providers": [
+                "synthetic"
+              ],
+              "retrievals": [
+                {
+                  "provider": "synthetic",
+                  "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+                  "url": "local:offline-corpus",
+                  "retrieved_at": "2026-10-03T00:00:00+00:00",
+                  "cache_hit": false
+                }
+              ],
+              "content_level": "abstract",
+              "content": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+              "content_url": "local:offline-corpus#quantization",
+              "citations": null,
+              "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+              "score": 0.0,
+              "selection_reasons": []
+            },
+            {
+              "source_id": "synthetic:pruning",
+              "title": "SYNTHETIC: Structured Pruning for Edge Inference",
+              "authors": [
+                "Synthetic classroom fixture"
+              ],
+              "year": null,
+              "identifiers": {
+                "synthetic": "pruning"
+              },
+              "url": "https://example.invalid/synthetic/pruning",
+              "abstract": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+              "providers": [
+                "synthetic"
+              ],
+              "retrievals": [
+                {
+                  "provider": "synthetic",
+                  "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+                  "url": "local:offline-corpus",
+                  "retrieved_at": "2026-10-03T00:00:00+00:00",
+                  "cache_hit": false
+                }
+              ],
+              "content_level": "abstract",
+              "content": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+              "content_url": "local:offline-corpus#pruning",
+              "citations": null,
+              "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+              "score": 0.0,
+              "selection_reasons": []
+            }
+          ],
+          "error": null
+        }
+      ],
+      "raw_count": 2,
+      "unique_count": 2,
+      "selected": [
+        "synthetic:pruning",
+        "synthetic:quantization"
+      ]
+    },
+    "search_round/2": {
+      "queries": [
+        "vision transformer edge GPU comparable quantization latency setup"
+      ],
+      "results": [
+        {
+          "query": "vision transformer edge GPU comparable quantization latency setup",
+          "provider": "synthetic",
+          "round": 2,
+          "sources": [
+            {
+              "source_id": "synthetic:setup",
+              "title": "SYNTHETIC: Precision and Batch Size on a Desktop GPU",
+              "authors": [
+                "Synthetic classroom fixture"
+              ],
+              "year": null,
+              "identifiers": {
+                "synthetic": "setup"
+              },
+              "url": "https://example.invalid/synthetic/setup",
+              "abstract": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+              "providers": [
+                "synthetic"
+              ],
+              "retrievals": [
+                {
+                  "provider": "synthetic",
+                  "query": "vision transformer edge GPU comparable quantization latency setup",
+                  "url": "local:offline-corpus",
+                  "retrieved_at": "2026-10-03T00:00:00+00:00",
+                  "cache_hit": false
+                }
+              ],
+              "content_level": "abstract",
+              "content": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+              "content_url": "local:offline-corpus#setup",
+              "citations": null,
+              "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+              "score": 0.0,
+              "selection_reasons": []
+            }
+          ],
+          "error": null
+        }
+      ],
+      "raw_count": 3,
+      "unique_count": 3,
+      "selected": [
+        "synthetic:setup"
+      ]
+    },
+    "selected": [
+      "synthetic:pruning",
+      "synthetic:quantization",
+      "synthetic:setup"
+    ],
+    "sources": [
+      {
+        "source_id": "synthetic:pruning",
+        "title": "SYNTHETIC: Structured Pruning for Edge Inference",
+        "authors": [
+          "Synthetic classroom fixture"
+        ],
+        "year": null,
+        "identifiers": {
+          "synthetic": "pruning"
+        },
+        "url": "https://example.invalid/synthetic/pruning",
+        "abstract": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+        "providers": [
+          "synthetic"
+        ],
+        "retrievals": [
+          {
+            "provider": "synthetic",
+            "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+            "url": "local:offline-corpus",
+            "retrieved_at": "2026-10-03T00:00:00+00:00",
+            "cache_hit": false
+          }
+        ],
+        "content_level": "abstract",
+        "content": "This synthetic classroom example evaluates structured channel pruning of a vision transformer on the fictional Edge-A GPU. Removing complete channels reduced model size. Sparse weight pruning alone did not reduce batch-one inference latency on the dense kernel used in this example. Fine-tuning recovered some accuracy. Results apply to the stated kernel and hardware; energy consumption was not measured.",
+        "content_url": "local:offline-corpus#pruning",
+        "citations": null,
+        "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+        "score": 0.58,
+        "selection_reasons": [
+          "question keyword overlap 6/10 (weight 0.8)",
+          "year unknown (recency weight 0.1)",
+          "abstract available: True (weight 0.1)"
+        ]
+      },
+      {
+        "source_id": "synthetic:quantization",
+        "title": "SYNTHETIC: Calibrated Quantization of a Vision Transformer",
+        "authors": [
+          "Synthetic classroom fixture"
+        ],
+        "year": null,
+        "identifiers": {
+          "synthetic": "quantization"
+        },
+        "url": "https://example.invalid/synthetic/quantization",
+        "abstract": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+        "providers": [
+          "synthetic"
+        ],
+        "retrievals": [
+          {
+            "provider": "synthetic",
+            "query": "How do quantization and pruning affect vision transformer inference on edge GPUs?",
+            "url": "local:offline-corpus",
+            "retrieved_at": "2026-10-03T00:00:00+00:00",
+            "cache_hit": false
+          }
+        ],
+        "content_level": "abstract",
+        "content": "This synthetic classroom example studies post-training quantization of a vision transformer. On the fictional Edge-A GPU, INT8 quantization reduced batch-one inference latency compared with the FP32 baseline. Representative calibration inputs reduced accuracy loss. The example holds model architecture, image resolution, and batch size fixed. It does not measure energy use or evaluate deployment under distribution shift.",
+        "content_url": "local:offline-corpus#quantization",
+        "citations": null,
+        "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+        "score": 0.58,
+        "selection_reasons": [
+          "question keyword overlap 6/10 (weight 0.8)",
+          "year unknown (recency weight 0.1)",
+          "abstract available: True (weight 0.1)"
+        ]
+      },
+      {
+        "source_id": "synthetic:setup",
+        "title": "SYNTHETIC: Precision and Batch Size on a Desktop GPU",
+        "authors": [
+          "Synthetic classroom fixture"
+        ],
+        "year": null,
+        "identifiers": {
+          "synthetic": "setup"
+        },
+        "url": "https://example.invalid/synthetic/setup",
+        "abstract": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+        "providers": [
+          "synthetic"
+        ],
+        "retrievals": [
+          {
+            "provider": "synthetic",
+            "query": "vision transformer edge GPU comparable quantization latency setup",
+            "url": "local:offline-corpus",
+            "retrieved_at": "2026-10-03T00:00:00+00:00",
+            "cache_hit": false
+          }
+        ],
+        "content_level": "abstract",
+        "content": "This synthetic classroom follow-up evaluates mixed precision on the fictional Desktop-B GPU at batch size thirty-two. FP16 increased throughput compared with FP32 for the same vision transformer. The experiment did not measure batch-one latency on Edge-A, so its result is not directly comparable with the edge quantization example. No energy measurement was reported. Hardware, batch size, and kernel support affect the practical speed benefit.",
+        "content_url": "local:offline-corpus#setup",
+        "citations": null,
+        "access_note": "Synthetic educational excerpt and deterministic model substitute; not real research evidence.",
+        "score": 0.58,
+        "selection_reasons": [
+          "question keyword overlap 6/10 (weight 0.8)",
+          "year unknown (recency weight 0.1)",
+          "abstract available: True (weight 0.1)"
+        ]
+      }
+    ],
+    "stage/analyze/1": {},
+    "stage/analyze/2": {},
+    "stage/plan": {
+      "queries": [
+        "How do quantization and pruning affect vision transformer inference on edge GPUs?"
+      ]
+    },
+    "stage/report": {},
+    "stage/review/1": {
+      "repeat": true,
+      "queries": [
+        "vision transformer edge GPU comparable quantization latency setup"
+      ]
+    },
+    "stage/review/2": {
+      "repeat": false,
+      "queries": []
+    },
+    "stage/search/1": {
+      "round": 1,
+      "repeat": false
+    },
+    "stage/search/2": {
+      "round": 2,
+      "repeat": false
+    }
+  },
+  "events": [
+    {
+      "id": 2,
+      "time": 1791004947.183222,
+      "stage": "plan",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 3,
+      "time": 1791004947.183834,
+      "stage": "plan",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "Plan",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 4,
+      "time": 1791004947.184351,
+      "stage": "plan",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.001
+      }
+    },
+    {
+      "id": 5,
+      "time": 1791004947.185312,
+      "stage": "search/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 6,
+      "time": 1791004947.1868758,
+      "stage": "search/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.001
+      }
+    },
+    {
+      "id": 7,
+      "time": 1791004947.187479,
+      "stage": "analyze/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 8,
+      "time": 1791004947.188311,
+      "stage": "analysis/synthetic:pruning",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "Analysis",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 9,
+      "time": 1791004947.188981,
+      "stage": "support/ev-e59ef7c421d8",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "SupportDecision",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 10,
+      "time": 1791004947.189899,
+      "stage": "analysis/synthetic:quantization",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "Analysis",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 11,
+      "time": 1791004947.190463,
+      "stage": "support/ev-428c796bb847",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "SupportDecision",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 12,
+      "time": 1791004947.191156,
+      "stage": "analyze/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.004
+      }
+    },
+    {
+      "id": 13,
+      "time": 1791004947.1917062,
+      "stage": "review/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 14,
+      "time": 1791004947.192428,
+      "stage": "review/1",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "Review",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 15,
+      "time": 1791004947.193362,
+      "stage": "review/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.002
+      }
+    },
+    {
+      "id": 16,
+      "time": 1791004947.194029,
+      "stage": "search/2",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 17,
+      "time": 1791004947.195344,
+      "stage": "search/2",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.001
+      }
+    },
+    {
+      "id": 18,
+      "time": 1791004947.196068,
+      "stage": "analyze/2",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 19,
+      "time": 1791004947.197101,
+      "stage": "analysis/synthetic:setup",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "Analysis",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 20,
+      "time": 1791004947.197695,
+      "stage": "support/ev-4ad6c0237525",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "SupportDecision",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 21,
+      "time": 1791004947.198346,
+      "stage": "analyze/2",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.002
+      }
+    },
+    {
+      "id": 22,
+      "time": 1791004947.1989179,
+      "stage": "review/2",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 23,
+      "time": 1791004947.199584,
+      "stage": "review/2",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "Review",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 24,
+      "time": 1791004947.2001789,
+      "stage": "comparison/2/0",
+      "kind": "model_substitute",
+      "data": {
+        "contract": "SupportDecision",
+        "tokens": 0
+      }
+    },
+    {
+      "id": 25,
+      "time": 1791004947.201371,
+      "stage": "review/2",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.002
+      }
+    },
+    {
+      "id": 26,
+      "time": 1791004947.201965,
+      "stage": "report",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 27,
+      "time": 1791004947.2027562,
+      "stage": "report",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.001
+      }
+    }
+  ]
+}

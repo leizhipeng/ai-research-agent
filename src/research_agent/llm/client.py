@@ -44,6 +44,7 @@ class OpenAICompatibleClient:
             api_key=settings.api_key.get_secret_value() if settings.api_key else None,
             base_url=settings.api_base_url,
             timeout=settings.request_timeout_seconds,
+            max_retries=0,
         )
 
     def complete(

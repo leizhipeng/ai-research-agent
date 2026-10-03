@@ -1,7 +1,7 @@
 """A deterministic paper-search tool for learning the agent loop.
 
-The tool deliberately uses local mock records on Day 1. Its public input/output
-contract is designed to remain stable when an arXiv adapter replaces it on Day 2.
+This teaching example deliberately uses local mock records. The production
+workflow uses the scholarly adapters in discovery.py.
 """
 
 from __future__ import annotations
@@ -66,14 +66,14 @@ class PaperSearchTool:
 
     @classmethod
     def schema(cls) -> dict[str, Any]:
-        """Return the strict OpenAI function-tool declaration."""
+        """Return a function declaration; Pydantic validates application inputs."""
         return {
             "type": "function",
             "function": {
                 "name": cls.name,
                 "description": cls.description,
                 "parameters": SearchPapersArguments.model_json_schema(),
-                "strict": True,
+                "strict": False,
             },
         }
 
@@ -139,7 +139,7 @@ class ToolRegistry:
 
 
 def build_default_registry() -> ToolRegistry:
-    """Build the Day 1 read-only tool set."""
+    """Build the manual example's read-only tool set."""
     registry = ToolRegistry()
     registry.register(name=PaperSearchTool.name, schema=PaperSearchTool.schema(), handler=PaperSearchTool.execute)
     return registry

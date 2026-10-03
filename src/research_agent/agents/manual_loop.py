@@ -19,7 +19,7 @@ SYSTEM_INSTRUCTIONS = """You are a scientific literature research assistant.
 Use the search_papers tool before making factual claims about research literature.
 Formulate a concise academic search query from the user's question. Base the final
 answer only on papers returned by tools. Name the papers you rely on and clearly
-state that Day 1 uses a local mock catalog rather than live literature sources."""
+state that this example uses a local mock catalog rather than live literature sources."""
 
 
 class ManualResearchAgent:

@@ -1,6 +1,6 @@
 """Core package for the Agentic Scientific Research Assistant."""
 
 from research_agent.config import Settings
-from research_agent.models.research import AgentState, Paper, ResearchPlan, ResearchQuestion
+from research_agent.models.research import AgentState, Paper, ResearchQuestion
 
-__all__ = ["AgentState", "Paper", "ResearchPlan", "ResearchQuestion", "Settings"]
+__all__ = ["AgentState", "Paper", "ResearchQuestion", "Settings"]

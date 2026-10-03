@@ -1,0 +1,1780 @@
+{
+  "run": {
+    "run_id": "research-03cea026004d",
+    "request": {
+      "question": "What methods are described for post-training quantization of vision transformers?",
+      "scope": "Describe author-reported methods and limitations from abstracts only.",
+      "mode": "live",
+      "limits": {
+        "max_rounds": 2,
+        "max_papers": 3,
+        "results_per_query": 2,
+        "max_queries": 1,
+        "max_model_calls": 20,
+        "max_tokens": 180000,
+        "max_seconds": 150.0,
+        "max_http_requests": 8,
+        "max_download_bytes": 12000000,
+        "concurrency": 2
+      },
+      "pause_after_plan": false,
+      "full_text": false,
+      "providers": [
+        "arxiv",
+        "openalex"
+      ]
+    },
+    "status": "partial",
+    "stage": "report",
+    "reason": "The supplied abstracts do not provide evidence sufficient to identify post-training quantization methods or quantization strategies for vision transformers. They only report general quantization, general vision-transformer deployment constraints, token-reduction limitations, and a hardware-oriented metric. Stopped at configured rounds/papers or no useful new query; unresolved scope is disclosed.",
+    "control": "continue",
+    "created_at": 1791004946.267324,
+    "active_seconds": 53.27437901496887,
+    "session_started": null,
+    "usage": {
+      "model_calls": 15,
+      "tokens": 14141,
+      "reserved_tokens": 103622,
+      "http_requests": 4,
+      "download_bytes": 108359,
+      "cache_hits": 0
+    }
+  },
+  "artifacts": {
+    "analyses": {
+      "openalex:W4395113676": {
+        "content_level": "abstract",
+        "window_start": 0,
+        "window_end": 1550,
+        "truncated": false,
+        "analysis": {
+          "problem": "",
+          "method": "",
+          "datasets": [],
+          "metrics": [
+            "Efficient Error Rate"
+          ],
+          "limitations": [],
+          "evidence": [
+            {
+              "claim": "The abstract identifies quantization strategies as one of four categories studied, without specifying that they are post-training methods.",
+              "quote": "More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies.",
+              "subquestion": 0
+            },
+            {
+              "claim": "The abstract reports deployment constraints from hardware and environmental restrictions.",
+              "quote": "it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities.",
+              "subquestion": 2
+            },
+            {
+              "claim": "The abstract introduces Efficient Error Rate for comparing inference-related model features.",
+              "quote": "a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time",
+              "subquestion": 3
+            }
+          ]
+        }
+      },
+      "openalex:W3137147200": {
+        "content_level": "abstract",
+        "window_start": 0,
+        "window_end": 878,
+        "truncated": false,
+        "analysis": {
+          "problem": "",
+          "method": "",
+          "datasets": [],
+          "metrics": [],
+          "limitations": [],
+          "evidence": [
+            {
+              "claim": "The source addresses general neural-network quantization rather than specifically post-training quantization of vision transformers.",
+              "quote": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations",
+              "subquestion": 0
+            },
+            {
+              "claim": "The abstract frames efficient inference as requiring consideration of model design, training, and deployment, but does not provide a specific post-training quantization procedure.",
+              "quote": "Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models.",
+              "subquestion": 1
+            }
+          ]
+        }
+      },
+      "openalex:W4390190626": {
+        "content_level": "abstract",
+        "window_start": 0,
+        "window_end": 1197,
+        "truncated": false,
+        "analysis": {
+          "problem": "",
+          "method": "",
+          "datasets": [
+            "four image classification datasets"
+          ],
+          "metrics": [
+            "similarity of reduction patterns",
+            "model performance"
+          ],
+          "limitations": [],
+          "evidence": [
+            {
+              "claim": "The study investigates token reduction rather than post-training quantization.",
+              "quote": "researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens.",
+              "subquestion": 0
+            },
+            {
+              "claim": "The abstract compares 10 token-reduction methods and identifies Top-K pruning as a baseline.",
+              "quote": "we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets.",
+              "subquestion": 1
+            },
+            {
+              "claim": "The abstract reports inconsistency in reduction patterns when backbone capacity changes.",
+              "quote": "the reduction patterns are generally not consistent when varying the capacity of the backbone model",
+              "subquestion": 2
+            }
+          ]
+        }
+      }
+    },
+    "citation_checks": [
+      {
+        "evidence_id": "ev-e1f752913241",
+        "source_id": "openalex:W4395113676",
+        "claim": "The abstract identifies quantization strategies as one of four categories studied, without specifying that they are post-training methods.",
+        "quote": "More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": false,
+        "reason": "The abstract reports only that “quantization strategies” are one of four analyzed categories. It does not specify any post-training quantization method for vision transformers, so the requested methods cannot be identified from this abstract."
+      },
+      {
+        "evidence_id": "ev-a954c2f51a23",
+        "source_id": "openalex:W4395113676",
+        "claim": "The abstract reports deployment constraints from hardware and environmental restrictions.",
+        "quote": "it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "The quote explicitly reports that employing vision transformers in real-world applications is challenging because of hardware and environmental restrictions, including processing and computational capabilities. This directly supports the claimed deployment constraints, although it does not specify post-training quantization methods or limitations specific to quantization."
+      },
+      {
+        "evidence_id": "ev-d398f9f7aedb",
+        "source_id": "openalex:W4395113676",
+        "claim": "The abstract introduces Efficient Error Rate for comparing inference-related model features.",
+        "quote": "a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "The quote explicitly states that the abstract introduces Efficient Error Rate to normalize and compare model features affecting hardware at inference time. It also identifies the compared features as parameters, bits, FLOPs, and model size. However, the abstract does not establish that this metric is specific to post-training quantization or provide further evaluation settings."
+      },
+      {
+        "evidence_id": "ev-6f89e2371570",
+        "source_id": "openalex:W3137147200",
+        "claim": "The source addresses general neural-network quantization rather than specifically post-training quantization of vision transformers.",
+        "quote": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "The supplied abstract describes quantization of deep neural-network computations generally—“This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations”—and does not mention post-training quantization or vision transformers. Therefore, it supports the claim that the source is general rather than specifically about post-training quantization methods for vision transformers. No such specific methods can be identified from this abstract."
+      },
+      {
+        "evidence_id": "ev-3240aa809107",
+        "source_id": "openalex:W3137147200",
+        "claim": "The abstract frames efficient inference as requiring consideration of model design, training, and deployment, but does not provide a specific post-training quantization procedure.",
+        "quote": "Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": false,
+        "reason": "The quote supports only the general statement that efficient inference requires reconsidering model design, training, and deployment. It does not describe post-training quantization or establish that the abstract lacks a specific procedure. The supplied abstract also does not report weight, activation, layer-wise, or mixed-precision quantization strategies."
+      },
+      {
+        "evidence_id": "ev-de6a49bc6002",
+        "source_id": "openalex:W4390190626",
+        "claim": "The study investigates token reduction rather than post-training quantization.",
+        "quote": "researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": false,
+        "reason": "The abstract describes token reduction methods, including removing redundant information and Top-K pruning, not post-training quantization methods for vision transformers. The quoted text supports token removal for efficiency but does not mention quantization or post-training quantization."
+      },
+      {
+        "evidence_id": "ev-9f6124189386",
+        "source_id": "openalex:W4390190626",
+        "claim": "The abstract compares 10 token-reduction methods and identifies Top-K pruning as a baseline.",
+        "quote": "we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": false,
+        "reason": "The supplied abstract concerns token reduction and pruning in vision transformers, not post-training quantization or quantization components such as weights, activations, layer-wise schemes, or mixed precision. The quote supports comparison of 10 token-reduction methods on four image-classification datasets, but it does not mention Top-K pruning or establish it as a baseline; that statement appears elsewhere in the abstract. No quantization method or limitation is reported."
+      },
+      {
+        "evidence_id": "ev-e639692ebf7a",
+        "source_id": "openalex:W4390190626",
+        "claim": "The abstract reports inconsistency in reduction patterns when backbone capacity changes.",
+        "quote": "the reduction patterns are generally not consistent when varying the capacity of the backbone model",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "The exact quote states that “the reduction patterns are generally not consistent when varying the capacity of the backbone model,” directly supporting the claim. This is an author-reported limitation from the abstract. However, it concerns token-reduction patterns rather than post-training quantization methods, so it does not provide evidence about quantization specifically."
+      }
+    ],
+    "comparison_checks/1": [
+      {
+        "comparison": {
+          "evidence_ids": [
+            "ev-a954c2f51a23",
+            "ev-6f89e2371570"
+          ],
+          "relation": "different_setup",
+          "explanation": "The first source concerns efficient vision transformers and reports general hardware and environmental deployment restrictions, while the second concerns quantization of deep neural-network computations generally and does not specifically address vision transformers or post-training quantization."
+        },
+        "supported": false,
+        "reason": "The quotations support hardware and environmental restrictions for unspecified “architectures” and quantization of deep neural-network computations. They do not establish that the first source concerns efficient vision transformers, nor that the second does not address vision transformers or post-training quantization."
+      },
+      {
+        "comparison": {
+          "evidence_ids": [
+            "ev-a954c2f51a23",
+            "ev-d398f9f7aedb"
+          ],
+          "relation": "agreement",
+          "explanation": "Both evidence items concern inference efficiency or deployment: one reports hardware and computational restrictions, and the other reports a metric for comparing model features affecting hardware at inference time. Neither supplies a specific post-training quantization method."
+        },
+        "supported": false,
+        "reason": "Comparison cites an unknown or unsupported evidence ID."
+      }
+    ],
+    "comparison_checks/2": [],
+    "evidence": [
+      {
+        "evidence_id": "ev-e1f752913241",
+        "source_id": "openalex:W4395113676",
+        "claim": "The abstract identifies quantization strategies as one of four categories studied, without specifying that they are post-training methods.",
+        "quote": "More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies.",
+        "start": 840,
+        "end": 983,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": false,
+        "support_reason": "The abstract reports only that “quantization strategies” are one of four analyzed categories. It does not specify any post-training quantization method for vision transformers, so the requested methods cannot be identified from this abstract."
+      },
+      {
+        "evidence_id": "ev-a954c2f51a23",
+        "source_id": "openalex:W4395113676",
+        "claim": "The abstract reports deployment constraints from hardware and environmental restrictions.",
+        "quote": "it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities.",
+        "start": 545,
+        "end": 723,
+        "content_level": "abstract",
+        "subquestion": 2,
+        "supported": true,
+        "support_reason": "The quote explicitly reports that employing vision transformers in real-world applications is challenging because of hardware and environmental restrictions, including processing and computational capabilities. This directly supports the claimed deployment constraints, although it does not specify post-training quantization methods or limitations specific to quantization."
+      },
+      {
+        "evidence_id": "ev-d398f9f7aedb",
+        "source_id": "openalex:W4395113676",
+        "claim": "The abstract introduces Efficient Error Rate for comparing inference-related model features.",
+        "quote": "a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time",
+        "start": 994,
+        "end": 1152,
+        "content_level": "abstract",
+        "subquestion": 3,
+        "supported": true,
+        "support_reason": "The quote explicitly states that the abstract introduces Efficient Error Rate to normalize and compare model features affecting hardware at inference time. It also identifies the compared features as parameters, bits, FLOPs, and model size. However, the abstract does not establish that this metric is specific to post-training quantization or provide further evaluation settings."
+      },
+      {
+        "evidence_id": "ev-6f89e2371570",
+        "source_id": "openalex:W3137147200",
+        "claim": "The source addresses general neural-network quantization rather than specifically post-training quantization of vision transformers.",
+        "quote": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations",
+        "start": 0,
+        "end": 118,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": true,
+        "support_reason": "The supplied abstract describes quantization of deep neural-network computations generally—“This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations”—and does not mention post-training quantization or vision transformers. Therefore, it supports the claim that the source is general rather than specifically about post-training quantization methods for vision transformers. No such specific methods can be identified from this abstract."
+      },
+      {
+        "evidence_id": "ev-3240aa809107",
+        "source_id": "openalex:W3137147200",
+        "claim": "The abstract frames efficient inference as requiring consideration of model design, training, and deployment, but does not provide a specific post-training quantization procedure.",
+        "quote": "Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models.",
+        "start": 369,
+        "end": 496,
+        "content_level": "abstract",
+        "subquestion": 1,
+        "supported": false,
+        "support_reason": "The quote supports only the general statement that efficient inference requires reconsidering model design, training, and deployment. It does not describe post-training quantization or establish that the abstract lacks a specific procedure. The supplied abstract also does not report weight, activation, layer-wise, or mixed-precision quantization strategies."
+      },
+      {
+        "evidence_id": "ev-de6a49bc6002",
+        "source_id": "openalex:W4390190626",
+        "claim": "The study investigates token reduction rather than post-training quantization.",
+        "quote": "researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens.",
+        "start": 56,
+        "end": 166,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": false,
+        "support_reason": "The abstract describes token reduction methods, including removing redundant information and Top-K pruning, not post-training quantization methods for vision transformers. The quoted text supports token removal for efficiency but does not mention quantization or post-training quantization."
+      },
+      {
+        "evidence_id": "ev-9f6124189386",
+        "source_id": "openalex:W4390190626",
+        "claim": "The abstract compares 10 token-reduction methods and identifies Top-K pruning as a baseline.",
+        "quote": "we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets.",
+        "start": 390,
+        "end": 519,
+        "content_level": "abstract",
+        "subquestion": 1,
+        "supported": false,
+        "support_reason": "The supplied abstract concerns token reduction and pruning in vision transformers, not post-training quantization or quantization components such as weights, activations, layer-wise schemes, or mixed precision. The quote supports comparison of 10 token-reduction methods on four image-classification datasets, but it does not mention Top-K pruning or establish it as a baseline; that statement appears elsewhere in the abstract. No quantization method or limitation is reported."
+      },
+      {
+        "evidence_id": "ev-e639692ebf7a",
+        "source_id": "openalex:W4390190626",
+        "claim": "The abstract reports inconsistency in reduction patterns when backbone capacity changes.",
+        "quote": "the reduction patterns are generally not consistent when varying the capacity of the backbone model",
+        "start": 745,
+        "end": 844,
+        "content_level": "abstract",
+        "subquestion": 2,
+        "supported": true,
+        "support_reason": "The exact quote states that “the reduction patterns are generally not consistent when varying the capacity of the backbone model,” directly supporting the claim. This is an author-reported limitation from the abstract. However, it concerns token-reduction patterns rather than post-training quantization methods, so it does not provide evidence about quantization specifically."
+      }
+    ],
+    "model/analysis/openalex:W3137147200": {
+      "problem": "The abstract discusses quantizing numerical values in deep neural-network computations, but does not specifically identify vision transformers or post-training quantization.",
+      "method": "The abstract states that the chapter provides general approaches to quantizing neural-network computations. No vision-transformer-specific post-training quantization method or quantization strategy is described.",
+      "datasets": [],
+      "metrics": [],
+      "limitations": [],
+      "evidence": [
+        {
+          "claim": "The source addresses general neural-network quantization rather than specifically post-training quantization of vision transformers.",
+          "quote": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations",
+          "subquestion": 0
+        },
+        {
+          "claim": "The abstract frames efficient inference as requiring consideration of model design, training, and deployment, but does not provide a specific post-training quantization procedure.",
+          "quote": "Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models.",
+          "subquestion": 1
+        }
+      ]
+    },
+    "model/analysis/openalex:W4390190626": {
+      "problem": "The abstract addresses efficiency through token reduction in Vision Transformers, not post-training quantization.",
+      "method": "It investigates and compares 10 token-reduction methods, including Top-K pruning, across classification tasks. No post-training quantization method is described.",
+      "datasets": [
+        "four image classification datasets"
+      ],
+      "metrics": [
+        "similarity of reduction patterns",
+        "model performance"
+      ],
+      "limitations": [
+        "The abstract reports that understanding of reduction patterns and how they differ across token-reduction methods and datasets is lacking.",
+        "Reduction patterns are generally not consistent when varying the capacity of the backbone model.",
+        "No quantization-specific limitations or unresolved issues are reported."
+      ],
+      "evidence": [
+        {
+          "claim": "The study investigates token reduction rather than post-training quantization.",
+          "quote": "researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens.",
+          "subquestion": 0
+        },
+        {
+          "claim": "The abstract compares 10 token-reduction methods and identifies Top-K pruning as a baseline.",
+          "quote": "we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets.",
+          "subquestion": 1
+        },
+        {
+          "claim": "The abstract reports inconsistency in reduction patterns when backbone capacity changes.",
+          "quote": "the reduction patterns are generally not consistent when varying the capacity of the backbone model",
+          "subquestion": 2
+        }
+      ]
+    },
+    "model/analysis/openalex:W4395113676": {
+      "problem": "The abstract does not specify post-training quantization methods for vision transformers. It reports deployment challenges caused by model size, computational cost, and hardware and environmental restrictions.",
+      "method": "The survey analyzes four efficiency categories, including quantization strategies, but does not identify specific post-training quantization techniques or components.",
+      "datasets": [],
+      "metrics": [
+        "Efficient Error Rate"
+      ],
+      "limitations": [
+        "\"it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities.\"",
+        "The abstract states that it discusses \"open challenges and promising research directions.\""
+      ],
+      "evidence": [
+        {
+          "claim": "The abstract identifies quantization strategies as one of four categories studied, without specifying that they are post-training methods.",
+          "quote": "More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies.",
+          "subquestion": 0
+        },
+        {
+          "claim": "The abstract reports deployment constraints from hardware and environmental restrictions.",
+          "quote": "it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities.",
+          "subquestion": 2
+        },
+        {
+          "claim": "The abstract introduces Efficient Error Rate for comparing inference-related model features.",
+          "quote": "a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time",
+          "subquestion": 3
+        }
+      ]
+    },
+    "model/comparison/1/0": {
+      "supported": false,
+      "reason": "The quotations support hardware and environmental restrictions for unspecified “architectures” and quantization of deep neural-network computations. They do not establish that the first source concerns efficient vision transformers, nor that the second does not address vision transformers or post-training quantization."
+    },
+    "model/plan": {
+      "objective": "Identify author-reported methods and limitations for post-training quantization of vision transformers, using abstracts only.",
+      "subquestions": [
+        "What post-training quantization methods for vision transformers are described in the abstracts?",
+        "What quantization components or strategies do the abstracts report, such as weight, activation, layer-wise, or mixed-precision quantization?",
+        "What limitations, constraints, or unresolved issues do the abstracts report?",
+        "What evaluation settings or metrics are mentioned in the abstracts, without inferring beyond the reported scope?"
+      ],
+      "search_queries": [
+        "vision transformer post-training quantization abstract",
+        "ViT PTQ quantization method limitations",
+        "vision transformer calibration-free post-training quantization",
+        "vision transformer mixed-precision post-training quantization"
+      ],
+      "scope_notes": "Use only supplied abstracts and report author-stated claims. Do not infer details from paper titles, full texts, related work, or independent validation. Record unavailable methods, limitations, datasets, hardware, and metrics as unknown."
+    },
+    "model/review/1": {
+      "covered_subquestions": [
+        2,
+        3
+      ],
+      "gaps": [
+        "The abstracts do not describe specific post-training quantization methods for vision transformers.",
+        "The abstracts do not report quantization components or strategies such as weight, activation, layer-wise, or mixed-precision quantization.",
+        "The abstracts do not specify quantization-specific limitations or unresolved issues beyond general hardware and environmental deployment restrictions.",
+        "Datasets, hardware platforms, experimental protocols, and detailed evaluation results are not reported.",
+        "The Efficient Error Rate is mentioned, but its use in a post-training quantization evaluation is not established by the supplied abstract."
+      ],
+      "followup_queries": [
+        "\"vision transformer\" \"post-training quantization\" method abstract",
+        "ViT PTQ weight activation mixed precision abstract",
+        "vision transformer quantization calibration layer-wise abstract",
+        "vision transformer post-training quantization limitations benchmark metric abstract"
+      ],
+      "comparisons": [
+        {
+          "evidence_ids": [
+            "ev-a954c2f51a23",
+            "ev-6f89e2371570"
+          ],
+          "relation": "different_setup",
+          "explanation": "The first source concerns efficient vision transformers and reports general hardware and environmental deployment restrictions, while the second concerns quantization of deep neural-network computations generally and does not specifically address vision transformers or post-training quantization."
+        },
+        {
+          "evidence_ids": [
+            "ev-a954c2f51a23",
+            "ev-d398f9f7aedb"
+          ],
+          "relation": "agreement",
+          "explanation": "Both evidence items concern inference efficiency or deployment: one reports hardware and computational restrictions, and the other reports a metric for comparing model features affecting hardware at inference time. Neither supplies a specific post-training quantization method."
+        }
+      ],
+      "sufficient": false,
+      "stop_reason": "The supplied abstracts provide only general deployment constraints and one inference-related metric. They do not provide enough evidence to answer the central question about post-training quantization methods or their quantization components for vision transformers."
+    },
+    "model/review/2": {
+      "covered_subquestions": [
+        2,
+        3
+      ],
+      "gaps": [
+        "No abstract describes a post-training quantization method specifically for vision transformers.",
+        "No abstract reports quantization components or strategies such as weight quantization, activation quantization, layer-wise quantization, calibration, or mixed precision.",
+        "Reported deployment constraints are general hardware and environmental restrictions, not limitations demonstrated to be specific to post-training quantization.",
+        "No datasets, hardware platforms, bit-widths, accuracy results, or other task-specific evaluation settings are reported.",
+        "The Efficient Error Rate is mentioned, but its use for evaluating post-training quantization of vision transformers is not established in the supplied abstracts."
+      ],
+      "followup_queries": [
+        "\"vision transformer\" \"post-training quantization\" method abstract",
+        "ViT PTQ weight activation mixed precision calibration abstract",
+        "transformer quantization calibration vision transformer abstract"
+      ],
+      "comparisons": [],
+      "sufficient": false,
+      "stop_reason": "The supplied abstracts do not provide evidence sufficient to identify post-training quantization methods or quantization strategies for vision transformers. They only report general quantization, general vision-transformer deployment constraints, token-reduction limitations, and a hardware-oriented metric."
+    },
+    "model/support/ev-3240aa809107": {
+      "supported": false,
+      "reason": "The quote supports only the general statement that efficient inference requires reconsidering model design, training, and deployment. It does not describe post-training quantization or establish that the abstract lacks a specific procedure. The supplied abstract also does not report weight, activation, layer-wise, or mixed-precision quantization strategies."
+    },
+    "model/support/ev-6f89e2371570": {
+      "supported": true,
+      "reason": "The supplied abstract describes quantization of deep neural-network computations generally—“This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations”—and does not mention post-training quantization or vision transformers. Therefore, it supports the claim that the source is general rather than specifically about post-training quantization methods for vision transformers. No such specific methods can be identified from this abstract."
+    },
+    "model/support/ev-9f6124189386": {
+      "supported": false,
+      "reason": "The supplied abstract concerns token reduction and pruning in vision transformers, not post-training quantization or quantization components such as weights, activations, layer-wise schemes, or mixed precision. The quote supports comparison of 10 token-reduction methods on four image-classification datasets, but it does not mention Top-K pruning or establish it as a baseline; that statement appears elsewhere in the abstract. No quantization method or limitation is reported."
+    },
+    "model/support/ev-a954c2f51a23": {
+      "supported": true,
+      "reason": "The quote explicitly reports that employing vision transformers in real-world applications is challenging because of hardware and environmental restrictions, including processing and computational capabilities. This directly supports the claimed deployment constraints, although it does not specify post-training quantization methods or limitations specific to quantization."
+    },
+    "model/support/ev-d398f9f7aedb": {
+      "supported": true,
+      "reason": "The quote explicitly states that the abstract introduces Efficient Error Rate to normalize and compare model features affecting hardware at inference time. It also identifies the compared features as parameters, bits, FLOPs, and model size. However, the abstract does not establish that this metric is specific to post-training quantization or provide further evaluation settings."
+    },
+    "model/support/ev-de6a49bc6002": {
+      "supported": false,
+      "reason": "The abstract describes token reduction methods, including removing redundant information and Top-K pruning, not post-training quantization methods for vision transformers. The quoted text supports token removal for efficiency but does not mention quantization or post-training quantization."
+    },
+    "model/support/ev-e1f752913241": {
+      "supported": false,
+      "reason": "The abstract reports only that “quantization strategies” are one of four analyzed categories. It does not specify any post-training quantization method for vision transformers, so the requested methods cannot be identified from this abstract."
+    },
+    "model/support/ev-e639692ebf7a": {
+      "supported": true,
+      "reason": "The exact quote states that “the reduction patterns are generally not consistent when varying the capacity of the backbone model,” directly supporting the claim. This is an author-reported limitation from the abstract. However, it concerns token-reduction patterns rather than post-training quantization methods, so it does not provide evidence about quantization specifically."
+    },
+    "outcome": {
+      "status": "partial",
+      "reason": "The supplied abstracts do not provide evidence sufficient to identify post-training quantization methods or quantization strategies for vision transformers. They only report general quantization, general vision-transformer deployment constraints, token-reduction limitations, and a hardware-oriented metric. Stopped at configured rounds/papers or no useful new query; unresolved scope is disclosed."
+    },
+    "plan": {
+      "objective": "Identify author-reported methods and limitations for post-training quantization of vision transformers, using abstracts only.",
+      "subquestions": [
+        "What post-training quantization methods for vision transformers are described in the abstracts?",
+        "What quantization components or strategies do the abstracts report, such as weight, activation, layer-wise, or mixed-precision quantization?",
+        "What limitations, constraints, or unresolved issues do the abstracts report?",
+        "What evaluation settings or metrics are mentioned in the abstracts, without inferring beyond the reported scope?"
+      ],
+      "search_queries": [
+        "vision transformer post-training quantization abstract"
+      ],
+      "scope_notes": "Use only supplied abstracts and report author-stated claims. Do not infer details from paper titles, full texts, related work, or independent validation. Record unavailable methods, limitations, datasets, hardware, and metrics as unknown."
+    },
+    "report": {
+      "markdown": "# Research report\n\nRun: `research-03cea026004d` · Outcome: **partial**\n\n**Question:** What methods are described for post-training quantization of vision transformers?\n\n**Scope:** Describe author-reported methods and limitations from abstracts only.\n\n## Search method\n\nKeyword discovery; deduplication by identifiers and conservative title matching. Ranking uses question word overlap (0.8), recency (0.1), and abstract availability (0.1). Citation counts do not establish relevance or truth.\n\nRound 1: vision transformer post-training quantization abstract\n\n- arxiv: 0 records\n- openalex: 2 records\n\nRound 2: \"vision transformer\" \"post-training quantization\" method abstract\n\n- arxiv: 0 records\n- openalex: 2 records\n\n## Findings and direct evidence\n\nStatements below are attributed to retained source text. A support check establishes a bounded textual assessment, not independent experimental validation.\n\n- **ev-a954c2f51a23** — The abstract reports deployment constraints from hardware and environmental restrictions. [A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking](https://doi.org/10.1109/tpami.2024.3392941)\n  - Basis: abstract; retained text characters 545:723; source `openalex:W4395113676`.\n  - Exact quotation: it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities.\n  - Support assessment: The quote explicitly reports that employing vision transformers in real-world applications is challenging because of hardware and environmental restrictions, including processing and computational capabilities. This directly supports the claimed deployment constraints, although it does not specify post-training quantization methods or limitations specific to quantization.\n\n- **ev-d398f9f7aedb** — The abstract introduces Efficient Error Rate for comparing inference-related model features. [A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking](https://doi.org/10.1109/tpami.2024.3392941)\n  - Basis: abstract; retained text characters 994:1152; source `openalex:W4395113676`.\n  - Exact quotation: a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time\n  - Support assessment: The quote explicitly states that the abstract introduces Efficient Error Rate to normalize and compare model features affecting hardware at inference time. It also identifies the compared features as parameters, bits, FLOPs, and model size. However, the abstract does not establish that this metric is specific to post-training quantization or provide further evaluation settings.\n\n- **ev-6f89e2371570** — The source addresses general neural-network quantization rather than specifically post-training quantization of vision transformers. [A Survey of Quantization Methods for Efficient Neural Network Inference](https://doi.org/10.1201/9781003162810-13)\n  - Basis: abstract; retained text characters 0:118; source `openalex:W3137147200`.\n  - Exact quotation: This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations\n  - Support assessment: The supplied abstract describes quantization of deep neural-network computations generally—“This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations”—and does not mention post-training quantization or vision transformers. Therefore, it supports the claim that the source is general rather than specifically about post-training quantization methods for vision transformers. No such specific methods can be identified from this abstract.\n\n- **ev-e639692ebf7a** — The abstract reports inconsistency in reduction patterns when backbone capacity changes. [Which Tokens to Use? Investigating Token Reduction in Vision Transformers](https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc)\n  - Basis: abstract; retained text characters 745:844; source `openalex:W4390190626`.\n  - Exact quotation: the reduction patterns are generally not consistent when varying the capacity of the backbone model\n  - Support assessment: The exact quote states that “the reduction patterns are generally not consistent when varying the capacity of the backbone model,” directly supporting the claim. This is an author-reported limitation from the abstract. However, it concerns token-reduction patterns rather than post-training quantization methods, so it does not provide evidence about quantization specifically.\n\n## Comparisons and synthesis\n\nNo checked cross-source comparison is available. Differences in tasks, datasets, hardware, and metrics must be resolved before calling results contradictory.\n\n## Coverage, gaps and uncertainty\n\n- Unresolved: What post-training quantization methods for vision transformers are described in the abstracts?\n- Unresolved: What quantization components or strategies do the abstracts report, such as weight, activation, layer-wise, or mixed-precision quantization?\n- Addressed within the retrieved evidence: What limitations, constraints, or unresolved issues do the abstracts report?\n- Addressed within the retrieved evidence: What evaluation settings or metrics are mentioned in the abstracts, without inferring beyond the reported scope?\n- No abstract describes a post-training quantization method specifically for vision transformers.\n- No abstract reports quantization components or strategies such as weight quantization, activation quantization, layer-wise quantization, calibration, or mixed precision.\n- Reported deployment constraints are general hardware and environmental restrictions, not limitations demonstrated to be specific to post-training quantization.\n- No datasets, hardware platforms, bit-widths, accuracy results, or other task-specific evaluation settings are reported.\n- The Efficient Error Rate is mentioned, but its use for evaluating post-training quantization of vision transformers is not established in the supplied abstracts.\n\n## Limitations and stopping condition\n\nThe supplied abstracts do not provide evidence sufficient to identify post-training quantization methods or quantization strategies for vision transformers. They only report general quantization, general vision-transformer deployment constraints, token-reduction limitations, and a hardware-oriented metric. Stopped at configured rounds/papers or no useful new query; unresolved scope is disclosed.\n\nSearches are bounded and do not establish systematic-review completeness. Metadata is not evidence of a result. Abstracts omit experimental detail. Accessible HTML may omit equations/figures and is read through a bounded window. Source statements remain author-reported. Model support judgments can be wrong; inspect exact quotations and scope before relying on the report.\n\nLimits: `{'max_rounds': 2, 'max_papers': 3, 'results_per_query': 2, 'max_queries': 1, 'max_model_calls': 20, 'max_tokens': 180000, 'max_seconds': 150.0, 'max_http_requests': 8, 'max_download_bytes': 12000000, 'concurrency': 2}`\n\nUsage: `{'model_calls': 15, 'tokens': 14141, 'reserved_tokens': 103622, 'http_requests': 4, 'download_bytes': 108359, 'cache_hits': 0}`\n\n## References and reading depth\n\n- [A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking](https://doi.org/10.1109/tpami.2024.3392941) (2024), `openalex:W4395113676`; IDs: `{'openalex': 'W4395113676', 'doi': '10.1109/tpami.2024.3392941', 'pmid': 'https://pubmed.ncbi.nlm.nih.gov/38656856', 'arxiv': '2309.02031', 'arxiv_unversioned': '2309.02031'}`; **abstract**. Reconstructed provider abstract; full paper not read. Analysis read characters 0:1550 of 1550; reading window truncated: False.\n- [Which Tokens to Use? Investigating Token Reduction in Vision Transformers](https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc) (2023), `openalex:W4390190626`; IDs: `{'openalex': 'W4390190626', 'doi': '10.1109/iccvw60793.2023.00085'}`; **abstract**. Reconstructed provider abstract; full paper not read. Analysis read characters 0:1197 of 1197; reading window truncated: False.\n- [A Survey of Quantization Methods for Efficient Neural Network Inference](https://doi.org/10.1201/9781003162810-13) (2022), `openalex:W3137147200`; IDs: `{'openalex': 'W3137147200', 'doi': '10.1201/9781003162810-13'}`; **abstract**. Reconstructed provider abstract; full paper not read. Analysis read characters 0:878 of 878; reading window truncated: False.\n",
+      "evidence_ids": [
+        "ev-a954c2f51a23",
+        "ev-d398f9f7aedb",
+        "ev-6f89e2371570",
+        "ev-e639692ebf7a"
+      ]
+    },
+    "review": {
+      "covered_subquestions": [
+        2,
+        3
+      ],
+      "gaps": [
+        "No abstract describes a post-training quantization method specifically for vision transformers.",
+        "No abstract reports quantization components or strategies such as weight quantization, activation quantization, layer-wise quantization, calibration, or mixed precision.",
+        "Reported deployment constraints are general hardware and environmental restrictions, not limitations demonstrated to be specific to post-training quantization.",
+        "No datasets, hardware platforms, bit-widths, accuracy results, or other task-specific evaluation settings are reported.",
+        "The Efficient Error Rate is mentioned, but its use for evaluating post-training quantization of vision transformers is not established in the supplied abstracts."
+      ],
+      "followup_queries": [
+        "\"vision transformer\" \"post-training quantization\" method abstract",
+        "ViT PTQ weight activation mixed precision calibration abstract",
+        "transformer quantization calibration vision transformer abstract"
+      ],
+      "comparisons": [],
+      "sufficient": false,
+      "stop_reason": "The supplied abstracts do not provide evidence sufficient to identify post-training quantization methods or quantization strategies for vision transformers. They only report general quantization, general vision-transformer deployment constraints, token-reduction limitations, and a hardware-oriented metric."
+    },
+    "review/1": {
+      "covered_subquestions": [
+        2,
+        3
+      ],
+      "gaps": [
+        "The abstracts do not describe specific post-training quantization methods for vision transformers.",
+        "The abstracts do not report quantization components or strategies such as weight, activation, layer-wise, or mixed-precision quantization.",
+        "The abstracts do not specify quantization-specific limitations or unresolved issues beyond general hardware and environmental deployment restrictions.",
+        "Datasets, hardware platforms, experimental protocols, and detailed evaluation results are not reported.",
+        "The Efficient Error Rate is mentioned, but its use in a post-training quantization evaluation is not established by the supplied abstract."
+      ],
+      "followup_queries": [
+        "\"vision transformer\" \"post-training quantization\" method abstract",
+        "ViT PTQ weight activation mixed precision abstract",
+        "vision transformer quantization calibration layer-wise abstract",
+        "vision transformer post-training quantization limitations benchmark metric abstract"
+      ],
+      "comparisons": [],
+      "sufficient": false,
+      "stop_reason": "The supplied abstracts provide only general deployment constraints and one inference-related metric. They do not provide enough evidence to answer the central question about post-training quantization methods or their quantization components for vision transformers."
+    },
+    "review/2": {
+      "covered_subquestions": [
+        2,
+        3
+      ],
+      "gaps": [
+        "No abstract describes a post-training quantization method specifically for vision transformers.",
+        "No abstract reports quantization components or strategies such as weight quantization, activation quantization, layer-wise quantization, calibration, or mixed precision.",
+        "Reported deployment constraints are general hardware and environmental restrictions, not limitations demonstrated to be specific to post-training quantization.",
+        "No datasets, hardware platforms, bit-widths, accuracy results, or other task-specific evaluation settings are reported.",
+        "The Efficient Error Rate is mentioned, but its use for evaluating post-training quantization of vision transformers is not established in the supplied abstracts."
+      ],
+      "followup_queries": [
+        "\"vision transformer\" \"post-training quantization\" method abstract",
+        "ViT PTQ weight activation mixed precision calibration abstract",
+        "transformer quantization calibration vision transformer abstract"
+      ],
+      "comparisons": [],
+      "sufficient": false,
+      "stop_reason": "The supplied abstracts do not provide evidence sufficient to identify post-training quantization methods or quantization strategies for vision transformers. They only report general quantization, general vision-transformer deployment constraints, token-reduction limitations, and a hardware-oriented metric."
+    },
+    "search/0982903b64a4c0c4e48a": {
+      "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+      "provider": "arxiv",
+      "round": 2,
+      "sources": [],
+      "error": null
+    },
+    "search/1ba0aa1e74a5e33fd53e": {
+      "query": "vision transformer post-training quantization abstract",
+      "provider": "arxiv",
+      "round": 1,
+      "sources": [],
+      "error": null
+    },
+    "search/86262676f8006c43676c": {
+      "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+      "provider": "openalex",
+      "round": 2,
+      "sources": [
+        {
+          "source_id": "openalex:W4395113676",
+          "title": "A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking",
+          "authors": [
+            "Lorenzo Papa",
+            "Paolo Russo",
+            "Irene Amerini",
+            "Luping Zhou"
+          ],
+          "year": 2024,
+          "identifiers": {
+            "openalex": "W4395113676",
+            "doi": "10.1109/tpami.2024.3392941",
+            "pmid": "https://pubmed.ncbi.nlm.nih.gov/38656856",
+            "arxiv": "2309.02031",
+            "arxiv_unversioned": "2309.02031"
+          },
+          "url": "https://doi.org/10.1109/tpami.2024.3392941",
+          "abstract": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+          "providers": [
+            "openalex"
+          ],
+          "retrievals": [
+            {
+              "provider": "openalex",
+              "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+              "url": "https://api.openalex.org/works?search=%22vision+transformer%22+%22post-training+quantization%22+method+abstract&per_page=2",
+              "retrieved_at": "2026-10-03T05:23:01.292421+00:00",
+              "cache_hit": false
+            }
+          ],
+          "content_level": "abstract",
+          "content": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+          "content_url": "https://doi.org/10.1109/tpami.2024.3392941",
+          "citations": 144,
+          "access_note": "Reconstructed provider abstract; full paper not read.",
+          "score": 0.0,
+          "selection_reasons": []
+        },
+        {
+          "source_id": "openalex:W4390190626",
+          "title": "Which Tokens to Use? Investigating Token Reduction in Vision Transformers",
+          "authors": [
+            "Joakim Bruslund Haurum",
+            "Sérgio Escalera",
+            "Graham W. Taylor",
+            "Thomas Baltzer Moeslund"
+          ],
+          "year": 2023,
+          "identifiers": {
+            "openalex": "W4390190626",
+            "doi": "10.1109/iccvw60793.2023.00085"
+          },
+          "url": "https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc",
+          "abstract": "Since the introduction of the Vision Transformer (ViT), researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens. While different methods have been explored to achieve this goal, we still lack understanding of the resulting reduction patterns and how those patterns differ across token reduction methods and datasets. To close this gap, we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets. By systematically comparing these methods on the different classification tasks, we find that the Top-K pruning method is a surprisingly strong baseline. Through in-depth analysis of the different methods, we determine that: the reduction patterns are generally not consistent when varying the capacity of the backbone model, the reduction patterns of pruning-based methods significantly differ from fixed radial patterns, and the reduction patterns of pruning-based methods are correlated across classification datasets. Finally we report that the similarity of reduction patterns is a moderate-to-strong proxy for model performance. Project page at https://vap.aau.dk/tokens.",
+          "providers": [
+            "openalex"
+          ],
+          "retrievals": [
+            {
+              "provider": "openalex",
+              "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+              "url": "https://api.openalex.org/works?search=%22vision+transformer%22+%22post-training+quantization%22+method+abstract&per_page=2",
+              "retrieved_at": "2026-10-03T05:23:01.292421+00:00",
+              "cache_hit": false
+            }
+          ],
+          "content_level": "abstract",
+          "content": "Since the introduction of the Vision Transformer (ViT), researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens. While different methods have been explored to achieve this goal, we still lack understanding of the resulting reduction patterns and how those patterns differ across token reduction methods and datasets. To close this gap, we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets. By systematically comparing these methods on the different classification tasks, we find that the Top-K pruning method is a surprisingly strong baseline. Through in-depth analysis of the different methods, we determine that: the reduction patterns are generally not consistent when varying the capacity of the backbone model, the reduction patterns of pruning-based methods significantly differ from fixed radial patterns, and the reduction patterns of pruning-based methods are correlated across classification datasets. Finally we report that the similarity of reduction patterns is a moderate-to-strong proxy for model performance. Project page at https://vap.aau.dk/tokens.",
+          "content_url": "https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc",
+          "citations": 44,
+          "access_note": "Reconstructed provider abstract; full paper not read.",
+          "score": 0.0,
+          "selection_reasons": []
+        }
+      ],
+      "error": null
+    },
+    "search/bd3821c749a564855791": {
+      "query": "vision transformer post-training quantization abstract",
+      "provider": "openalex",
+      "round": 1,
+      "sources": [
+        {
+          "source_id": "openalex:W3137147200",
+          "title": "A Survey of Quantization Methods for Efficient Neural Network Inference",
+          "authors": [
+            "Amir Gholami",
+            "Sehoon Kim",
+            "Zhen Dong",
+            "Zhewei Yao",
+            "Michael W. Mahoney",
+            "Kurt Keutzer"
+          ],
+          "year": 2022,
+          "identifiers": {
+            "openalex": "W3137147200",
+            "doi": "10.1201/9781003162810-13"
+          },
+          "url": "https://doi.org/10.1201/9781003162810-13",
+          "abstract": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations, covering the advantages/disadvantages of current methods. Over the past decade, people have observed significant improvements in the accuracy of Neural Networks (NNs) for a wide range of problems, often achieved by highly over-parameterized models. Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models. Model distillation involves training a large model and then using it as a teacher to train a more compact model. Loosely related to NN quantization is work in neuroscience that suggests that the human brain stores information in a discrete/quantized form, rather than in a continuous form. Gray and Neuhoff have written a very nice survey of the history of quantization up to 1998.",
+          "providers": [
+            "openalex"
+          ],
+          "retrievals": [
+            {
+              "provider": "openalex",
+              "query": "vision transformer post-training quantization abstract",
+              "url": "https://api.openalex.org/works?search=vision+transformer+post-training+quantization+abstract&per_page=2",
+              "retrieved_at": "2026-10-03T05:22:29.511967+00:00",
+              "cache_hit": false
+            }
+          ],
+          "content_level": "abstract",
+          "content": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations, covering the advantages/disadvantages of current methods. Over the past decade, people have observed significant improvements in the accuracy of Neural Networks (NNs) for a wide range of problems, often achieved by highly over-parameterized models. Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models. Model distillation involves training a large model and then using it as a teacher to train a more compact model. Loosely related to NN quantization is work in neuroscience that suggests that the human brain stores information in a discrete/quantized form, rather than in a continuous form. Gray and Neuhoff have written a very nice survey of the history of quantization up to 1998.",
+          "content_url": "https://doi.org/10.1201/9781003162810-13",
+          "citations": 1149,
+          "access_note": "Reconstructed provider abstract; full paper not read.",
+          "score": 0.0,
+          "selection_reasons": []
+        },
+        {
+          "source_id": "openalex:W4395113676",
+          "title": "A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking",
+          "authors": [
+            "Lorenzo Papa",
+            "Paolo Russo",
+            "Irene Amerini",
+            "Luping Zhou"
+          ],
+          "year": 2024,
+          "identifiers": {
+            "openalex": "W4395113676",
+            "doi": "10.1109/tpami.2024.3392941",
+            "pmid": "https://pubmed.ncbi.nlm.nih.gov/38656856",
+            "arxiv": "2309.02031",
+            "arxiv_unversioned": "2309.02031"
+          },
+          "url": "https://doi.org/10.1109/tpami.2024.3392941",
+          "abstract": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+          "providers": [
+            "openalex"
+          ],
+          "retrievals": [
+            {
+              "provider": "openalex",
+              "query": "vision transformer post-training quantization abstract",
+              "url": "https://api.openalex.org/works?search=vision+transformer+post-training+quantization+abstract&per_page=2",
+              "retrieved_at": "2026-10-03T05:22:29.511967+00:00",
+              "cache_hit": false
+            }
+          ],
+          "content_level": "abstract",
+          "content": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+          "content_url": "https://doi.org/10.1109/tpami.2024.3392941",
+          "citations": 144,
+          "access_note": "Reconstructed provider abstract; full paper not read.",
+          "score": 0.0,
+          "selection_reasons": []
+        }
+      ],
+      "error": null
+    },
+    "search_round/1": {
+      "queries": [
+        "vision transformer post-training quantization abstract"
+      ],
+      "results": [
+        {
+          "query": "vision transformer post-training quantization abstract",
+          "provider": "arxiv",
+          "round": 1,
+          "sources": [],
+          "error": null
+        },
+        {
+          "query": "vision transformer post-training quantization abstract",
+          "provider": "openalex",
+          "round": 1,
+          "sources": [
+            {
+              "source_id": "openalex:W3137147200",
+              "title": "A Survey of Quantization Methods for Efficient Neural Network Inference",
+              "authors": [
+                "Amir Gholami",
+                "Sehoon Kim",
+                "Zhen Dong",
+                "Zhewei Yao",
+                "Michael W. Mahoney",
+                "Kurt Keutzer"
+              ],
+              "year": 2022,
+              "identifiers": {
+                "openalex": "W3137147200",
+                "doi": "10.1201/9781003162810-13"
+              },
+              "url": "https://doi.org/10.1201/9781003162810-13",
+              "abstract": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations, covering the advantages/disadvantages of current methods. Over the past decade, people have observed significant improvements in the accuracy of Neural Networks (NNs) for a wide range of problems, often achieved by highly over-parameterized models. Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models. Model distillation involves training a large model and then using it as a teacher to train a more compact model. Loosely related to NN quantization is work in neuroscience that suggests that the human brain stores information in a discrete/quantized form, rather than in a continuous form. Gray and Neuhoff have written a very nice survey of the history of quantization up to 1998.",
+              "providers": [
+                "openalex"
+              ],
+              "retrievals": [
+                {
+                  "provider": "openalex",
+                  "query": "vision transformer post-training quantization abstract",
+                  "url": "https://api.openalex.org/works?search=vision+transformer+post-training+quantization+abstract&per_page=2",
+                  "retrieved_at": "2026-10-03T05:22:29.511967+00:00",
+                  "cache_hit": false
+                }
+              ],
+              "content_level": "abstract",
+              "content": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations, covering the advantages/disadvantages of current methods. Over the past decade, people have observed significant improvements in the accuracy of Neural Networks (NNs) for a wide range of problems, often achieved by highly over-parameterized models. Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models. Model distillation involves training a large model and then using it as a teacher to train a more compact model. Loosely related to NN quantization is work in neuroscience that suggests that the human brain stores information in a discrete/quantized form, rather than in a continuous form. Gray and Neuhoff have written a very nice survey of the history of quantization up to 1998.",
+              "content_url": "https://doi.org/10.1201/9781003162810-13",
+              "citations": 1149,
+              "access_note": "Reconstructed provider abstract; full paper not read.",
+              "score": 0.0,
+              "selection_reasons": []
+            },
+            {
+              "source_id": "openalex:W4395113676",
+              "title": "A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking",
+              "authors": [
+                "Lorenzo Papa",
+                "Paolo Russo",
+                "Irene Amerini",
+                "Luping Zhou"
+              ],
+              "year": 2024,
+              "identifiers": {
+                "openalex": "W4395113676",
+                "doi": "10.1109/tpami.2024.3392941",
+                "pmid": "https://pubmed.ncbi.nlm.nih.gov/38656856",
+                "arxiv": "2309.02031",
+                "arxiv_unversioned": "2309.02031"
+              },
+              "url": "https://doi.org/10.1109/tpami.2024.3392941",
+              "abstract": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+              "providers": [
+                "openalex"
+              ],
+              "retrievals": [
+                {
+                  "provider": "openalex",
+                  "query": "vision transformer post-training quantization abstract",
+                  "url": "https://api.openalex.org/works?search=vision+transformer+post-training+quantization+abstract&per_page=2",
+                  "retrieved_at": "2026-10-03T05:22:29.511967+00:00",
+                  "cache_hit": false
+                }
+              ],
+              "content_level": "abstract",
+              "content": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+              "content_url": "https://doi.org/10.1109/tpami.2024.3392941",
+              "citations": 144,
+              "access_note": "Reconstructed provider abstract; full paper not read.",
+              "score": 0.0,
+              "selection_reasons": []
+            }
+          ],
+          "error": null
+        }
+      ],
+      "raw_count": 2,
+      "unique_count": 2,
+      "selected": [
+        "openalex:W4395113676",
+        "openalex:W3137147200"
+      ]
+    },
+    "search_round/2": {
+      "queries": [
+        "\"vision transformer\" \"post-training quantization\" method abstract"
+      ],
+      "results": [
+        {
+          "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+          "provider": "arxiv",
+          "round": 2,
+          "sources": [],
+          "error": null
+        },
+        {
+          "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+          "provider": "openalex",
+          "round": 2,
+          "sources": [
+            {
+              "source_id": "openalex:W4395113676",
+              "title": "A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking",
+              "authors": [
+                "Lorenzo Papa",
+                "Paolo Russo",
+                "Irene Amerini",
+                "Luping Zhou"
+              ],
+              "year": 2024,
+              "identifiers": {
+                "openalex": "W4395113676",
+                "doi": "10.1109/tpami.2024.3392941",
+                "pmid": "https://pubmed.ncbi.nlm.nih.gov/38656856",
+                "arxiv": "2309.02031",
+                "arxiv_unversioned": "2309.02031"
+              },
+              "url": "https://doi.org/10.1109/tpami.2024.3392941",
+              "abstract": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+              "providers": [
+                "openalex"
+              ],
+              "retrievals": [
+                {
+                  "provider": "openalex",
+                  "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+                  "url": "https://api.openalex.org/works?search=%22vision+transformer%22+%22post-training+quantization%22+method+abstract&per_page=2",
+                  "retrieved_at": "2026-10-03T05:23:01.292421+00:00",
+                  "cache_hit": false
+                }
+              ],
+              "content_level": "abstract",
+              "content": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+              "content_url": "https://doi.org/10.1109/tpami.2024.3392941",
+              "citations": 144,
+              "access_note": "Reconstructed provider abstract; full paper not read.",
+              "score": 0.0,
+              "selection_reasons": []
+            },
+            {
+              "source_id": "openalex:W4390190626",
+              "title": "Which Tokens to Use? Investigating Token Reduction in Vision Transformers",
+              "authors": [
+                "Joakim Bruslund Haurum",
+                "Sérgio Escalera",
+                "Graham W. Taylor",
+                "Thomas Baltzer Moeslund"
+              ],
+              "year": 2023,
+              "identifiers": {
+                "openalex": "W4390190626",
+                "doi": "10.1109/iccvw60793.2023.00085"
+              },
+              "url": "https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc",
+              "abstract": "Since the introduction of the Vision Transformer (ViT), researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens. While different methods have been explored to achieve this goal, we still lack understanding of the resulting reduction patterns and how those patterns differ across token reduction methods and datasets. To close this gap, we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets. By systematically comparing these methods on the different classification tasks, we find that the Top-K pruning method is a surprisingly strong baseline. Through in-depth analysis of the different methods, we determine that: the reduction patterns are generally not consistent when varying the capacity of the backbone model, the reduction patterns of pruning-based methods significantly differ from fixed radial patterns, and the reduction patterns of pruning-based methods are correlated across classification datasets. Finally we report that the similarity of reduction patterns is a moderate-to-strong proxy for model performance. Project page at https://vap.aau.dk/tokens.",
+              "providers": [
+                "openalex"
+              ],
+              "retrievals": [
+                {
+                  "provider": "openalex",
+                  "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+                  "url": "https://api.openalex.org/works?search=%22vision+transformer%22+%22post-training+quantization%22+method+abstract&per_page=2",
+                  "retrieved_at": "2026-10-03T05:23:01.292421+00:00",
+                  "cache_hit": false
+                }
+              ],
+              "content_level": "abstract",
+              "content": "Since the introduction of the Vision Transformer (ViT), researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens. While different methods have been explored to achieve this goal, we still lack understanding of the resulting reduction patterns and how those patterns differ across token reduction methods and datasets. To close this gap, we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets. By systematically comparing these methods on the different classification tasks, we find that the Top-K pruning method is a surprisingly strong baseline. Through in-depth analysis of the different methods, we determine that: the reduction patterns are generally not consistent when varying the capacity of the backbone model, the reduction patterns of pruning-based methods significantly differ from fixed radial patterns, and the reduction patterns of pruning-based methods are correlated across classification datasets. Finally we report that the similarity of reduction patterns is a moderate-to-strong proxy for model performance. Project page at https://vap.aau.dk/tokens.",
+              "content_url": "https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc",
+              "citations": 44,
+              "access_note": "Reconstructed provider abstract; full paper not read.",
+              "score": 0.0,
+              "selection_reasons": []
+            }
+          ],
+          "error": null
+        }
+      ],
+      "raw_count": 4,
+      "unique_count": 3,
+      "selected": [
+        "openalex:W4390190626"
+      ]
+    },
+    "selected": [
+      "openalex:W4395113676",
+      "openalex:W3137147200",
+      "openalex:W4390190626"
+    ],
+    "sources": [
+      {
+        "source_id": "openalex:W4395113676",
+        "title": "A Survey on Efficient Vision Transformers: Algorithms, Techniques, and Performance Benchmarking",
+        "authors": [
+          "Lorenzo Papa",
+          "Paolo Russo",
+          "Irene Amerini",
+          "Luping Zhou"
+        ],
+        "year": 2024,
+        "identifiers": {
+          "openalex": "W4395113676",
+          "doi": "10.1109/tpami.2024.3392941",
+          "pmid": "https://pubmed.ncbi.nlm.nih.gov/38656856",
+          "arxiv": "2309.02031",
+          "arxiv_unversioned": "2309.02031"
+        },
+        "url": "https://doi.org/10.1109/tpami.2024.3392941",
+        "abstract": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+        "providers": [
+          "openalex"
+        ],
+        "retrievals": [
+          {
+            "provider": "openalex",
+            "query": "vision transformer post-training quantization abstract",
+            "url": "https://api.openalex.org/works?search=vision+transformer+post-training+quantization+abstract&per_page=2",
+            "retrieved_at": "2026-10-03T05:22:29.511967+00:00",
+            "cache_hit": false
+          },
+          {
+            "provider": "openalex",
+            "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+            "url": "https://api.openalex.org/works?search=%22vision+transformer%22+%22post-training+quantization%22+method+abstract&per_page=2",
+            "retrieved_at": "2026-10-03T05:23:01.292421+00:00",
+            "cache_hit": false
+          }
+        ],
+        "content_level": "abstract",
+        "content": "Vision Transformer (ViT) architectures are becoming increasingly popular and widely employed to tackle computer vision applications. Their main feature is the capacity to extract global information through the self-attention mechanism, outperforming earlier convolutional neural networks. However, ViT deployment and performance have grown steadily with their size, number of trainable parameters, and operations. Furthermore, self-attention's computational and memory cost quadratically increases with the image resolution. Generally speaking, it is challenging to employ these architectures in real-world applications due to many hardware and environmental restrictions, such as processing and computational capabilities. Therefore, this survey investigates the most efficient methodologies to ensure sub-optimal estimation performances. More in detail, four efficient categories will be analyzed: compact architecture, pruning, knowledge distillation, and quantization strategies. Moreover, a new metric called Efficient Error Rate has been introduced in order to normalize and compare models' features that affect hardware devices at inference time, such as the number of parameters, bits, FLOPs, and model size. Summarizing, this paper first mathematically defines the strategies used to make Vision Transformer efficient, describes and discusses state-of-the-art methodologies, and analyzes their performances over different application scenarios. Toward the end of this paper, we also discuss open challenges and promising research directions.",
+        "content_url": "https://doi.org/10.1109/tpami.2024.3392941",
+        "citations": 144,
+        "access_note": "Reconstructed provider abstract; full paper not read.",
+        "score": 0.6371,
+        "selection_reasons": [
+          "question keyword overlap 4/7 (weight 0.8)",
+          "year 2024 (recency weight 0.1)",
+          "abstract available: True (weight 0.1)"
+        ]
+      },
+      {
+        "source_id": "openalex:W4390190626",
+        "title": "Which Tokens to Use? Investigating Token Reduction in Vision Transformers",
+        "authors": [
+          "Joakim Bruslund Haurum",
+          "Sérgio Escalera",
+          "Graham W. Taylor",
+          "Thomas Baltzer Moeslund"
+        ],
+        "year": 2023,
+        "identifiers": {
+          "openalex": "W4390190626",
+          "doi": "10.1109/iccvw60793.2023.00085"
+        },
+        "url": "https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc",
+        "abstract": "Since the introduction of the Vision Transformer (ViT), researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens. While different methods have been explored to achieve this goal, we still lack understanding of the resulting reduction patterns and how those patterns differ across token reduction methods and datasets. To close this gap, we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets. By systematically comparing these methods on the different classification tasks, we find that the Top-K pruning method is a surprisingly strong baseline. Through in-depth analysis of the different methods, we determine that: the reduction patterns are generally not consistent when varying the capacity of the backbone model, the reduction patterns of pruning-based methods significantly differ from fixed radial patterns, and the reduction patterns of pruning-based methods are correlated across classification datasets. Finally we report that the similarity of reduction patterns is a moderate-to-strong proxy for model performance. Project page at https://vap.aau.dk/tokens.",
+        "providers": [
+          "openalex"
+        ],
+        "retrievals": [
+          {
+            "provider": "openalex",
+            "query": "\"vision transformer\" \"post-training quantization\" method abstract",
+            "url": "https://api.openalex.org/works?search=%22vision+transformer%22+%22post-training+quantization%22+method+abstract&per_page=2",
+            "retrieved_at": "2026-10-03T05:23:01.292421+00:00",
+            "cache_hit": false
+          }
+        ],
+        "content_level": "abstract",
+        "content": "Since the introduction of the Vision Transformer (ViT), researchers have sought to make ViTs more efficient by removing redundant information in the processed tokens. While different methods have been explored to achieve this goal, we still lack understanding of the resulting reduction patterns and how those patterns differ across token reduction methods and datasets. To close this gap, we set out to understand the reduction patterns of 10 different token reduction methods using four image classification datasets. By systematically comparing these methods on the different classification tasks, we find that the Top-K pruning method is a surprisingly strong baseline. Through in-depth analysis of the different methods, we determine that: the reduction patterns are generally not consistent when varying the capacity of the backbone model, the reduction patterns of pruning-based methods significantly differ from fixed radial patterns, and the reduction patterns of pruning-based methods are correlated across classification datasets. Finally we report that the similarity of reduction patterns is a moderate-to-strong proxy for model performance. Project page at https://vap.aau.dk/tokens.",
+        "content_url": "https://vbn.aau.dk/da/publications/5447fe07-02f2-4462-a537-31ea9c6a88fc",
+        "citations": 44,
+        "access_note": "Reconstructed provider abstract; full paper not read.",
+        "score": 0.5195,
+        "selection_reasons": [
+          "question keyword overlap 3/7 (weight 0.8)",
+          "year 2023 (recency weight 0.1)",
+          "abstract available: True (weight 0.1)"
+        ]
+      },
+      {
+        "source_id": "openalex:W3137147200",
+        "title": "A Survey of Quantization Methods for Efficient Neural Network Inference",
+        "authors": [
+          "Amir Gholami",
+          "Sehoon Kim",
+          "Zhen Dong",
+          "Zhewei Yao",
+          "Michael W. Mahoney",
+          "Kurt Keutzer"
+        ],
+        "year": 2022,
+        "identifiers": {
+          "openalex": "W3137147200",
+          "doi": "10.1201/9781003162810-13"
+        },
+        "url": "https://doi.org/10.1201/9781003162810-13",
+        "abstract": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations, covering the advantages/disadvantages of current methods. Over the past decade, people have observed significant improvements in the accuracy of Neural Networks (NNs) for a wide range of problems, often achieved by highly over-parameterized models. Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models. Model distillation involves training a large model and then using it as a teacher to train a more compact model. Loosely related to NN quantization is work in neuroscience that suggests that the human brain stores information in a discrete/quantized form, rather than in a continuous form. Gray and Neuhoff have written a very nice survey of the history of quantization up to 1998.",
+        "providers": [
+          "openalex"
+        ],
+        "retrievals": [
+          {
+            "provider": "openalex",
+            "query": "vision transformer post-training quantization abstract",
+            "url": "https://api.openalex.org/works?search=vision+transformer+post-training+quantization+abstract&per_page=2",
+            "retrieved_at": "2026-10-03T05:22:29.511967+00:00",
+            "cache_hit": false
+          }
+        ],
+        "content_level": "abstract",
+        "content": "This chapter provides approaches to the problem of quantizing the numerical values in deep Neural Network computations, covering the advantages/disadvantages of current methods. Over the past decade, people have observed significant improvements in the accuracy of Neural Networks (NNs) for a wide range of problems, often achieved by highly over-parameterized models. Achieving efficient, real-time NNs with optimal accuracy requires rethinking the design, training, and deployment of NN models. Model distillation involves training a large model and then using it as a teacher to train a more compact model. Loosely related to NN quantization is work in neuroscience that suggests that the human brain stores information in a discrete/quantized form, rather than in a continuous form. Gray and Neuhoff have written a very nice survey of the history of quantization up to 1998.",
+        "content_url": "https://doi.org/10.1201/9781003162810-13",
+        "citations": 1149,
+        "access_note": "Reconstructed provider abstract; full paper not read.",
+        "score": 0.5162,
+        "selection_reasons": [
+          "question keyword overlap 3/7 (weight 0.8)",
+          "year 2022 (recency weight 0.1)",
+          "abstract available: True (weight 0.1)"
+        ]
+      }
+    ],
+    "stage/analyze/1": {},
+    "stage/analyze/2": {},
+    "stage/plan": {
+      "queries": [
+        "vision transformer post-training quantization abstract"
+      ]
+    },
+    "stage/report": {},
+    "stage/review/1": {
+      "repeat": true,
+      "queries": [
+        "\"vision transformer\" \"post-training quantization\" method abstract"
+      ]
+    },
+    "stage/review/2": {
+      "repeat": false,
+      "queries": [
+        "ViT PTQ weight activation mixed precision calibration abstract"
+      ]
+    },
+    "stage/search/1": {
+      "round": 1,
+      "repeat": false
+    },
+    "stage/search/2": {
+      "round": 2,
+      "repeat": false
+    }
+  },
+  "events": [
+    {
+      "id": 1,
+      "time": 1791004946.274582,
+      "stage": "plan",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 28,
+      "time": 1791004949.130294,
+      "stage": "plan",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.832,
+        "usage": {
+          "completion_tokens": 250,
+          "prompt_tokens": 258,
+          "total_tokens": 508,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 46,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUUzWYcFDKknSZPmWOjdo1of5DB",
+        "contract": "Plan"
+      }
+    },
+    {
+      "id": 29,
+      "time": 1791004949.131739,
+      "stage": "plan",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 2.857
+      }
+    },
+    {
+      "id": 30,
+      "time": 1791004949.1351428,
+      "stage": "search/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 31,
+      "time": 1791004949.537934,
+      "stage": "search/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.403
+      }
+    },
+    {
+      "id": 32,
+      "time": 1791004949.539916,
+      "stage": "analyze/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 33,
+      "time": 1791004955.4897192,
+      "stage": "analysis/openalex:W4395113676",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 5.945,
+        "usage": {
+          "completion_tokens": 574,
+          "prompt_tokens": 871,
+          "total_tokens": 1445,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 287,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUY3AJBRJutR6WMol3AKaJ8rTFN",
+        "contract": "Analysis"
+      }
+    },
+    {
+      "id": 34,
+      "time": 1791004957.886936,
+      "stage": "support/ev-e1f752913241",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.393,
+        "usage": {
+          "completion_tokens": 83,
+          "prompt_tokens": 547,
+          "total_tokens": 630,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 20,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUe3skgZpLQI3S2cBKdbl2gYp8v",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 35,
+      "time": 1791004960.2083871,
+      "stage": "support/ev-a954c2f51a23",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.317,
+        "usage": {
+          "completion_tokens": 157,
+          "prompt_tokens": 537,
+          "total_tokens": 694,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 84,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUgmpkynymXurxXoHytBDWNs0he",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 36,
+      "time": 1791004962.4287791,
+      "stage": "support/ev-d398f9f7aedb",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.216,
+        "usage": {
+          "completion_tokens": 165,
+          "prompt_tokens": 527,
+          "total_tokens": 692,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 80,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUiZzJhacVV9EdJUVg8EctgzP3o",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 37,
+      "time": 1791004967.278878,
+      "stage": "analysis/openalex:W3137147200",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 4.845,
+        "usage": {
+          "completion_tokens": 535,
+          "prompt_tokens": 780,
+          "total_tokens": 1315,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 335,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUk7BXkzZFF7R7uB7dJro0qCfMv",
+        "contract": "Analysis"
+      }
+    },
+    {
+      "id": 38,
+      "time": 1791004970.2114491,
+      "stage": "support/ev-6f89e2371570",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.929,
+        "usage": {
+          "completion_tokens": 199,
+          "prompt_tokens": 456,
+          "total_tokens": 655,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 98,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUpOfStmW0ZLFszoZkv1jmmOy5f",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 39,
+      "time": 1791004972.5740008,
+      "stage": "support/ev-3240aa809107",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.358,
+        "usage": {
+          "completion_tokens": 178,
+          "prompt_tokens": 538,
+          "total_tokens": 716,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 96,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUsbZdcAebwfCSgzOpX5KppimjN",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 40,
+      "time": 1791004972.576224,
+      "stage": "analyze/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 23.036
+      }
+    },
+    {
+      "id": 41,
+      "time": 1791004972.577974,
+      "stage": "review/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 42,
+      "time": 1791004978.556757,
+      "stage": "review/1",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 5.975,
+        "usage": {
+          "completion_tokens": 562,
+          "prompt_tokens": 1220,
+          "total_tokens": 1782,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 182,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 1217,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmUupXkq36CbE6qdidd8GLPfEk3A",
+        "contract": "Review"
+      }
+    },
+    {
+      "id": 43,
+      "time": 1791004980.987982,
+      "stage": "comparison/1/0",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.426,
+        "usage": {
+          "completion_tokens": 163,
+          "prompt_tokens": 290,
+          "total_tokens": 453,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 92,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmV0sVTVES9xdDH40nhlz6dtoqWV",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 44,
+      "time": 1791004980.9905028,
+      "stage": "review/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 8.412
+      }
+    },
+    {
+      "id": 45,
+      "time": 1791004980.992481,
+      "stage": "search/2",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 46,
+      "time": 1791004981.590987,
+      "stage": "search/2",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.598
+      }
+    },
+    {
+      "id": 47,
+      "time": 1791004981.592865,
+      "stage": "analyze/2",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 48,
+      "time": 1791004986.2715242,
+      "stage": "analysis/openalex:W4390190626",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 4.674,
+        "usage": {
+          "completion_tokens": 520,
+          "prompt_tokens": 812,
+          "total_tokens": 1332,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 255,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmV4z88MywMVy2g2CgtNXYYo7fr0",
+        "contract": "Analysis"
+      }
+    },
+    {
+      "id": 49,
+      "time": 1791004987.777812,
+      "stage": "support/ev-de6a49bc6002",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 1.503,
+        "usage": {
+          "completion_tokens": 61,
+          "prompt_tokens": 445,
+          "total_tokens": 506,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmV82br5XxpwxdO0CvWHiEJWYid7",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 50,
+      "time": 1791004990.435712,
+      "stage": "support/ev-9f6124189386",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.654,
+        "usage": {
+          "completion_tokens": 188,
+          "prompt_tokens": 521,
+          "total_tokens": 709,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 81,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmVA6SCJAKyCIh4Fokjr4QrFJYne",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 51,
+      "time": 1791004994.081645,
+      "stage": "support/ev-e639692ebf7a",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 3.642,
+        "usage": {
+          "completion_tokens": 317,
+          "prompt_tokens": 488,
+          "total_tokens": 805,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 231,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmVCde6bo7FOEjDMZvZZEJWg0Yk7",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 52,
+      "time": 1791004994.0842822,
+      "stage": "analyze/2",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 12.491
+      }
+    },
+    {
+      "id": 53,
+      "time": 1791004994.086144,
+      "stage": "review/2",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 54,
+      "time": 1791004999.530431,
+      "stage": "review/2",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 5.441,
+        "usage": {
+          "completion_tokens": 473,
+          "prompt_tokens": 1426,
+          "total_tokens": 1899,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 235,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 1423,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmVGsQkW7TkFeedVC51wv0o1vtS9",
+        "contract": "Review"
+      }
+    },
+    {
+      "id": 55,
+      "time": 1791004999.534548,
+      "stage": "review/2",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 5.448
+      }
+    },
+    {
+      "id": 56,
+      "time": 1791004999.536381,
+      "stage": "report",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 57,
+      "time": 1791004999.538501,
+      "stage": "report",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.002
+      }
+    }
+  ]
+}

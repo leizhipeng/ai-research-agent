@@ -4,5 +4,7 @@ __pycache__/
 .venv/
 .env
 *.sqlite
+*.sqlite-*
+data/
 .DS_Store
 .idea/

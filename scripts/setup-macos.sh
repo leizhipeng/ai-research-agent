@@ -32,8 +32,8 @@ else
     echo "Kept the existing .env file unchanged."
 fi
 
-echo "Running tests..."
-uv run pytest
+echo "Checking application imports..."
+uv run python -c 'import research_agent.workflow; import research_agent.mcp_server'
 
 echo "macOS setup complete. Try:"
-echo "  uv run research-agent --offline \"What methods accelerate vision transformers?\""
+echo "  uv run research-agent run --offline \"What methods accelerate vision transformers?\""

@@ -1,4 +1,4 @@
-"""Pydantic contracts for research data and the Day 1 agent state."""
+"""Pydantic contracts for the small manual-loop teaching example."""
 
 from __future__ import annotations
 
@@ -17,17 +17,6 @@ class ResearchQuestion(BaseModel):
     question: str = Field(min_length=10, max_length=2_000)
     scope: str | None = Field(default=None, max_length=1_000)
     max_results: int = Field(default=5, ge=1, le=20)
-
-
-class ResearchPlan(BaseModel):
-    """A future structured output contract for the research planner."""
-
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
-
-    question: str = Field(min_length=10)
-    objective: str | None = Field(default=None, max_length=1_000)
-    subquestions: list[str] = Field(default_factory=list, max_length=10)
-    search_queries: list[str] = Field(default_factory=list, max_length=10)
 
 
 class Paper(BaseModel):
@@ -121,13 +110,12 @@ class AgentStatus(StrEnum):
 
 
 class AgentState(BaseModel):
-    """The complete, inspectable state of a single Day 1 agent run."""
+    """The inspectable state of a single manual-loop run."""
 
     model_config = ConfigDict(extra="forbid", validate_assignment=True)
 
     run_id: str = Field(default_factory=lambda: f"research-{uuid4().hex[:12]}")
     question: ResearchQuestion
-    plan: ResearchPlan | None = None
     messages: list[ConversationMessage] = Field(default_factory=list)
     tool_executions: list[ToolExecution] = Field(default_factory=list)
     retrieved_papers: list[Paper] = Field(default_factory=list)
@@ -139,4 +127,7 @@ class AgentState(BaseModel):
     def record_papers(self, papers: list[Paper]) -> None:
         """Append only papers not already represented by a provider-neutral identifier."""
         existing_ids = {paper.paper_id for paper in self.retrieved_papers}
-        self.retrieved_papers.extend(paper for paper in papers if paper.paper_id not in existing_ids)
+        for paper in papers:
+            if paper.paper_id not in existing_ids:
+                self.retrieved_papers.append(paper)
+                existing_ids.add(paper.paper_id)

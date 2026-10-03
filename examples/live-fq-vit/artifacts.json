@@ -1,0 +1,725 @@
+{
+  "run": {
+    "run_id": "research-a69dd6e553e2",
+    "request": {
+      "question": "What is the PTF component proposed by FQ-ViT?",
+      "scope": "Explain PTF from the author-reported abstract only. Do not assess experiments, alternatives, or LIS.",
+      "mode": "live",
+      "limits": {
+        "max_rounds": 1,
+        "max_papers": 1,
+        "results_per_query": 1,
+        "max_queries": 1,
+        "max_model_calls": 8,
+        "max_tokens": 90000,
+        "max_seconds": 90.0,
+        "max_http_requests": 4,
+        "max_download_bytes": 12000000,
+        "concurrency": 2
+      },
+      "pause_after_plan": false,
+      "full_text": false,
+      "search_queries": [
+        "FQ-ViT"
+      ],
+      "providers": [
+        "arxiv",
+        "openalex"
+      ]
+    },
+    "status": "completed",
+    "stage": "report",
+    "reason": "The author-reported abstract identifies PTF as the Power-of-Two Factor, describes it as a systematic method, and states that it addresses performance degradation and inference complexity in fully quantized vision transformers. It also attributes relevant difficulties to serious inter-channel variation in LayerNorm inputs.",
+    "control": "continue",
+    "created_at": 1791005248.87667,
+    "active_seconds": 14.213298797607422,
+    "session_started": null,
+    "usage": {
+      "model_calls": 5,
+      "tokens": 4277,
+      "reserved_tokens": 32987,
+      "http_requests": 0,
+      "download_bytes": 0,
+      "cache_hits": 2
+    }
+  },
+  "artifacts": {
+    "analyses": {
+      "arxiv:2111.13824": {
+        "content_level": "abstract",
+        "window_start": 0,
+        "window_end": 1349,
+        "truncated": false,
+        "analysis": {
+          "problem": "",
+          "method": "",
+          "datasets": [],
+          "metrics": [],
+          "limitations": [],
+          "evidence": [
+            {
+              "claim": "PTF addresses performance degradation and inference complexity in fully quantized vision transformers.",
+              "quote": "Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers.",
+              "subquestion": 0
+            },
+            {
+              "claim": "The abstract attributes the difficulties to inter-channel variation in LayerNorm inputs.",
+              "quote": "many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs",
+              "subquestion": 0
+            }
+          ]
+        }
+      }
+    },
+    "citation_checks": [
+      {
+        "evidence_id": "ev-ac2c4dd9fda1",
+        "source_id": "arxiv:2111.13824",
+        "claim": "PTF addresses performance degradation and inference complexity in fully quantized vision transformers.",
+        "quote": "Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers.",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "The abstract identifies PTF as the “Power-of-Two Factor (PTF), a systematic method” and states that it is proposed to reduce “the performance degradation and inference complexity of fully quantized vision transformers.” Thus, it supports the claim within the abstract-only scope, but does not provide further implementation details."
+      },
+      {
+        "evidence_id": "ev-5d758ebd933c",
+        "source_id": "arxiv:2111.13824",
+        "claim": "The abstract attributes the difficulties to inter-channel variation in LayerNorm inputs.",
+        "quote": "many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs",
+        "identity_valid": true,
+        "linkage_valid": true,
+        "supported": true,
+        "reason": "The abstract explicitly states that “many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs,” directly supporting the claim that this variation is identified as the source of the difficulties."
+      }
+    ],
+    "comparison_checks/1": [],
+    "evidence": [
+      {
+        "evidence_id": "ev-ac2c4dd9fda1",
+        "source_id": "arxiv:2111.13824",
+        "claim": "PTF addresses performance degradation and inference complexity in fully quantized vision transformers.",
+        "quote": "Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers.",
+        "start": 461,
+        "end": 610,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": true,
+        "support_reason": "The abstract identifies PTF as the “Power-of-Two Factor (PTF), a systematic method” and states that it is proposed to reduce “the performance degradation and inference complexity of fully quantized vision transformers.” Thus, it supports the claim within the abstract-only scope, but does not provide further implementation details."
+      },
+      {
+        "evidence_id": "ev-5d758ebd933c",
+        "source_id": "arxiv:2111.13824",
+        "claim": "The abstract attributes the difficulties to inter-channel variation in LayerNorm inputs.",
+        "quote": "many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs",
+        "start": 351,
+        "end": 446,
+        "content_level": "abstract",
+        "subquestion": 0,
+        "supported": true,
+        "support_reason": "The abstract explicitly states that “many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs,” directly supporting the claim that this variation is identified as the source of the difficulties."
+      }
+    ],
+    "model/analysis/arxiv:2111.13824": {
+      "problem": "\"serious inter-channel variation in LayerNorm inputs\"",
+      "method": "\"Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers.\"",
+      "datasets": [],
+      "metrics": [],
+      "limitations": [],
+      "evidence": [
+        {
+          "claim": "PTF addresses performance degradation and inference complexity in fully quantized vision transformers.",
+          "quote": "Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers.",
+          "subquestion": 0
+        },
+        {
+          "claim": "The abstract attributes the difficulties to inter-channel variation in LayerNorm inputs.",
+          "quote": "many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs",
+          "subquestion": 0
+        }
+      ]
+    },
+    "model/plan": {
+      "objective": "Explain the PTF component proposed by FQ-ViT using only the author-reported abstract, without assessing experiments, alternatives, or LIS.",
+      "subquestions": [
+        "What is PTF and what problem is it proposed to address?"
+      ],
+      "search_queries": [
+        "FQ-ViT PTF component"
+      ],
+      "scope_notes": "Use only the author-reported abstract. Report the component’s stated purpose and description; do not assess experiments, compare alternatives, or discuss LIS. Exact supporting text is required, and missing details should be recorded as unknown."
+    },
+    "model/review/1": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The abstract does not provide implementation details explaining how PTF reduces performance degradation or inference complexity."
+      ],
+      "followup_queries": [],
+      "comparisons": [],
+      "sufficient": true,
+      "stop_reason": "The author-reported abstract identifies PTF as the Power-of-Two Factor, describes it as a systematic method, and states that it addresses performance degradation and inference complexity in fully quantized vision transformers. It also attributes relevant difficulties to serious inter-channel variation in LayerNorm inputs."
+    },
+    "model/support/ev-5d758ebd933c": {
+      "supported": true,
+      "reason": "The abstract explicitly states that “many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs,” directly supporting the claim that this variation is identified as the source of the difficulties."
+    },
+    "model/support/ev-ac2c4dd9fda1": {
+      "supported": true,
+      "reason": "The abstract identifies PTF as the “Power-of-Two Factor (PTF), a systematic method” and states that it is proposed to reduce “the performance degradation and inference complexity of fully quantized vision transformers.” Thus, it supports the claim within the abstract-only scope, but does not provide further implementation details."
+    },
+    "outcome": {
+      "status": "completed",
+      "reason": "The author-reported abstract identifies PTF as the Power-of-Two Factor, describes it as a systematic method, and states that it addresses performance degradation and inference complexity in fully quantized vision transformers. It also attributes relevant difficulties to serious inter-channel variation in LayerNorm inputs."
+    },
+    "plan": {
+      "objective": "Explain the PTF component proposed by FQ-ViT using only the author-reported abstract, without assessing experiments, alternatives, or LIS.",
+      "subquestions": [
+        "What is PTF and what problem is it proposed to address?"
+      ],
+      "search_queries": [
+        "FQ-ViT"
+      ],
+      "scope_notes": "Use only the author-reported abstract. Report the component’s stated purpose and description; do not assess experiments, compare alternatives, or discuss LIS. Exact supporting text is required, and missing details should be recorded as unknown."
+    },
+    "report": {
+      "markdown": "# Research report\n\nRun: `research-a69dd6e553e2` · Outcome: **completed**\n\n**Question:** What is the PTF component proposed by FQ-ViT?\n\n**Scope:** Explain PTF from the author-reported abstract only. Do not assess experiments, alternatives, or LIS.\n\n## Search method\n\nKeyword discovery; deduplication by identifiers and conservative title matching. Ranking uses question word overlap (0.8), recency (0.1), and abstract availability (0.1). Citation counts do not establish relevance or truth.\n\nRound 1: FQ-ViT\n\n- arxiv: 1 records\n- openalex: 1 records\n\n## Findings and direct evidence\n\nStatements below are attributed to retained source text. A support check establishes a bounded textual assessment, not independent experimental validation.\n\n- **ev-ac2c4dd9fda1** — PTF addresses performance degradation and inference complexity in fully quantized vision transformers. [FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer](https://arxiv.org/abs/2111.13824v4)\n  - Basis: abstract; retained text characters 461:610; source `arxiv:2111.13824`.\n  - Exact quotation: Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers.\n  - Support assessment: The abstract identifies PTF as the “Power-of-Two Factor (PTF), a systematic method” and states that it is proposed to reduce “the performance degradation and inference complexity of fully quantized vision transformers.” Thus, it supports the claim within the abstract-only scope, but does not provide further implementation details.\n\n- **ev-5d758ebd933c** — The abstract attributes the difficulties to inter-channel variation in LayerNorm inputs. [FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer](https://arxiv.org/abs/2111.13824v4)\n  - Basis: abstract; retained text characters 351:446; source `arxiv:2111.13824`.\n  - Exact quotation: many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs\n  - Support assessment: The abstract explicitly states that “many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs,” directly supporting the claim that this variation is identified as the source of the difficulties.\n\n## Comparisons and synthesis\n\nNo checked cross-source comparison is available. Differences in tasks, datasets, hardware, and metrics must be resolved before calling results contradictory.\n\n## Coverage, gaps and uncertainty\n\n- Addressed within the retrieved evidence: What is PTF and what problem is it proposed to address?\n- The abstract does not provide implementation details explaining how PTF reduces performance degradation or inference complexity.\n\n## Limitations and stopping condition\n\nThe author-reported abstract identifies PTF as the Power-of-Two Factor, describes it as a systematic method, and states that it addresses performance degradation and inference complexity in fully quantized vision transformers. It also attributes relevant difficulties to serious inter-channel variation in LayerNorm inputs.\n\nSearches are bounded and do not establish systematic-review completeness. Metadata is not evidence of a result. Abstracts omit experimental detail. Accessible HTML may omit equations/figures and is read through a bounded window. Source statements remain author-reported. Model support judgments can be wrong; inspect exact quotations and scope before relying on the report.\n\nLimits: `{'max_rounds': 1, 'max_papers': 1, 'results_per_query': 1, 'max_queries': 1, 'max_model_calls': 8, 'max_tokens': 90000, 'max_seconds': 90.0, 'max_http_requests': 4, 'max_download_bytes': 12000000, 'concurrency': 2}`\n\nUsage: `{'model_calls': 5, 'tokens': 4277, 'reserved_tokens': 32987, 'http_requests': 0, 'download_bytes': 0, 'cache_hits': 2}`\n\n## References and reading depth\n\n- [FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer](https://arxiv.org/abs/2111.13824v4) (2021), `arxiv:2111.13824`; IDs: `{'arxiv': '2111.13824v4', 'arxiv_unversioned': '2111.13824', 'openalex': 'W4285601701', 'doi': '10.24963/ijcai.2022/164'}`; **abstract**. Provider-supplied abstract; the full paper has not been read. Analysis read characters 0:1349 of 1349; reading window truncated: False.\n",
+      "evidence_ids": [
+        "ev-ac2c4dd9fda1",
+        "ev-5d758ebd933c"
+      ]
+    },
+    "review": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The abstract does not provide implementation details explaining how PTF reduces performance degradation or inference complexity."
+      ],
+      "followup_queries": [],
+      "comparisons": [],
+      "sufficient": true,
+      "stop_reason": "The author-reported abstract identifies PTF as the Power-of-Two Factor, describes it as a systematic method, and states that it addresses performance degradation and inference complexity in fully quantized vision transformers. It also attributes relevant difficulties to serious inter-channel variation in LayerNorm inputs."
+    },
+    "review/1": {
+      "covered_subquestions": [
+        0
+      ],
+      "gaps": [
+        "The abstract does not provide implementation details explaining how PTF reduces performance degradation or inference complexity."
+      ],
+      "followup_queries": [],
+      "comparisons": [],
+      "sufficient": true,
+      "stop_reason": "The author-reported abstract identifies PTF as the Power-of-Two Factor, describes it as a systematic method, and states that it addresses performance degradation and inference complexity in fully quantized vision transformers. It also attributes relevant difficulties to serious inter-channel variation in LayerNorm inputs."
+    },
+    "search/99d3f9e33f758b78cbcb": {
+      "query": "FQ-ViT",
+      "provider": "arxiv",
+      "round": 1,
+      "sources": [
+        {
+          "source_id": "arxiv:2111.13824",
+          "title": "FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer",
+          "authors": [
+            "Yang Lin",
+            "Tianyu Zhang",
+            "Peiqin Sun",
+            "Zheng Li",
+            "Shuchang Zhou"
+          ],
+          "year": 2021,
+          "identifiers": {
+            "arxiv": "2111.13824v4",
+            "arxiv_unversioned": "2111.13824"
+          },
+          "url": "https://arxiv.org/abs/2111.13824v4",
+          "abstract": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+          "providers": [
+            "arxiv"
+          ],
+          "retrievals": [
+            {
+              "provider": "arxiv",
+              "query": "FQ-ViT",
+              "url": "https://export.arxiv.org/api/query?search_query=all%3AFQ-ViT&start=0&max_results=1&sortBy=relevance&sortOrder=descending",
+              "retrieved_at": "2026-10-03T05:25:56.620183+00:00",
+              "cache_hit": true
+            }
+          ],
+          "content_level": "abstract",
+          "content": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+          "content_url": "https://arxiv.org/abs/2111.13824v4",
+          "citations": null,
+          "access_note": "Provider-supplied abstract; the full paper has not been read.",
+          "score": 0.0,
+          "selection_reasons": []
+        }
+      ],
+      "error": null
+    },
+    "search/cd61f0b4c80958fec150": {
+      "query": "FQ-ViT",
+      "provider": "openalex",
+      "round": 1,
+      "sources": [
+        {
+          "source_id": "openalex:W4285601701",
+          "title": "FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer",
+          "authors": [
+            "Yang Lin",
+            "Tianyu Zhang",
+            "Peiqin Sun",
+            "Zheng Li",
+            "Shuchang Zhou"
+          ],
+          "year": 2022,
+          "identifiers": {
+            "openalex": "W4285601701",
+            "doi": "10.24963/ijcai.2022/164"
+          },
+          "url": "https://doi.org/10.24963/ijcai.2022/164",
+          "abstract": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+          "providers": [
+            "openalex"
+          ],
+          "retrievals": [
+            {
+              "provider": "openalex",
+              "query": "FQ-ViT",
+              "url": "https://api.openalex.org/works?search=FQ-ViT&per_page=1",
+              "retrieved_at": "2026-10-03T05:25:56.764610+00:00",
+              "cache_hit": true
+            }
+          ],
+          "content_level": "abstract",
+          "content": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+          "content_url": "https://doi.org/10.24963/ijcai.2022/164",
+          "citations": 171,
+          "access_note": "Reconstructed provider abstract; full paper not read.",
+          "score": 0.0,
+          "selection_reasons": []
+        }
+      ],
+      "error": null
+    },
+    "search_round/1": {
+      "queries": [
+        "FQ-ViT"
+      ],
+      "results": [
+        {
+          "query": "FQ-ViT",
+          "provider": "arxiv",
+          "round": 1,
+          "sources": [
+            {
+              "source_id": "arxiv:2111.13824",
+              "title": "FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer",
+              "authors": [
+                "Yang Lin",
+                "Tianyu Zhang",
+                "Peiqin Sun",
+                "Zheng Li",
+                "Shuchang Zhou"
+              ],
+              "year": 2021,
+              "identifiers": {
+                "arxiv": "2111.13824v4",
+                "arxiv_unversioned": "2111.13824"
+              },
+              "url": "https://arxiv.org/abs/2111.13824v4",
+              "abstract": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+              "providers": [
+                "arxiv"
+              ],
+              "retrievals": [
+                {
+                  "provider": "arxiv",
+                  "query": "FQ-ViT",
+                  "url": "https://export.arxiv.org/api/query?search_query=all%3AFQ-ViT&start=0&max_results=1&sortBy=relevance&sortOrder=descending",
+                  "retrieved_at": "2026-10-03T05:25:56.620183+00:00",
+                  "cache_hit": true
+                }
+              ],
+              "content_level": "abstract",
+              "content": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+              "content_url": "https://arxiv.org/abs/2111.13824v4",
+              "citations": null,
+              "access_note": "Provider-supplied abstract; the full paper has not been read.",
+              "score": 0.0,
+              "selection_reasons": []
+            }
+          ],
+          "error": null
+        },
+        {
+          "query": "FQ-ViT",
+          "provider": "openalex",
+          "round": 1,
+          "sources": [
+            {
+              "source_id": "openalex:W4285601701",
+              "title": "FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer",
+              "authors": [
+                "Yang Lin",
+                "Tianyu Zhang",
+                "Peiqin Sun",
+                "Zheng Li",
+                "Shuchang Zhou"
+              ],
+              "year": 2022,
+              "identifiers": {
+                "openalex": "W4285601701",
+                "doi": "10.24963/ijcai.2022/164"
+              },
+              "url": "https://doi.org/10.24963/ijcai.2022/164",
+              "abstract": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+              "providers": [
+                "openalex"
+              ],
+              "retrievals": [
+                {
+                  "provider": "openalex",
+                  "query": "FQ-ViT",
+                  "url": "https://api.openalex.org/works?search=FQ-ViT&per_page=1",
+                  "retrieved_at": "2026-10-03T05:25:56.764610+00:00",
+                  "cache_hit": true
+                }
+              ],
+              "content_level": "abstract",
+              "content": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+              "content_url": "https://doi.org/10.24963/ijcai.2022/164",
+              "citations": 171,
+              "access_note": "Reconstructed provider abstract; full paper not read.",
+              "score": 0.0,
+              "selection_reasons": []
+            }
+          ],
+          "error": null
+        }
+      ],
+      "raw_count": 2,
+      "unique_count": 1,
+      "selected": [
+        "arxiv:2111.13824"
+      ]
+    },
+    "selected": [
+      "arxiv:2111.13824"
+    ],
+    "sources": [
+      {
+        "source_id": "arxiv:2111.13824",
+        "title": "FQ-ViT: Post-Training Quantization for Fully Quantized Vision Transformer",
+        "authors": [
+          "Yang Lin",
+          "Tianyu Zhang",
+          "Peiqin Sun",
+          "Zheng Li",
+          "Shuchang Zhou"
+        ],
+        "year": 2021,
+        "identifiers": {
+          "arxiv": "2111.13824v4",
+          "arxiv_unversioned": "2111.13824",
+          "openalex": "W4285601701",
+          "doi": "10.24963/ijcai.2022/164"
+        },
+        "url": "https://arxiv.org/abs/2111.13824v4",
+        "abstract": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+        "providers": [
+          "arxiv",
+          "openalex"
+        ],
+        "retrievals": [
+          {
+            "provider": "arxiv",
+            "query": "FQ-ViT",
+            "url": "https://export.arxiv.org/api/query?search_query=all%3AFQ-ViT&start=0&max_results=1&sortBy=relevance&sortOrder=descending",
+            "retrieved_at": "2026-10-03T05:25:56.620183+00:00",
+            "cache_hit": true
+          },
+          {
+            "provider": "openalex",
+            "query": "FQ-ViT",
+            "url": "https://api.openalex.org/works?search=FQ-ViT&per_page=1",
+            "retrieved_at": "2026-10-03T05:25:56.764610+00:00",
+            "cache_hit": true
+          }
+        ],
+        "content_level": "abstract",
+        "content": "Network quantization significantly reduces model inference complexity and has been widely used in real-world deployments. However, most existing quantization methods have been developed mainly on Convolutional Neural Networks (CNNs), and suffer severe degradation when applied to fully quantized vision transformers. In this work, we demonstrate that many of these difficulties arise because of serious inter-channel variation in LayerNorm inputs, and present, Power-of-Two Factor (PTF), a systematic method to reduce the performance degradation and inference complexity of fully quantized vision transformers. In addition, observing an extreme non-uniform distribution in attention maps, we propose Log-Int-Softmax (LIS) to sustain that and simplify inference by using 4-bit quantization and the BitShift operator. Comprehensive experiments on various transformer-based architectures and benchmarks show that our Fully Quantized Vision Transformer (FQ-ViT) outperforms previous works while even using lower bit-width on attention maps. For instance, we reach 84.89% top-1 accuracy with ViT-L on ImageNet and 50.8 mAP with Cascade Mask R-CNN (Swin-S) on COCO. To our knowledge, we are the first to achieve lossless accuracy degradation (~1%) on fully quantized vision transformers. The code is available at https://github.com/megvii-research/FQ-ViT.",
+        "content_url": "https://arxiv.org/abs/2111.13824v4",
+        "citations": 171,
+        "access_note": "Provider-supplied abstract; the full paper has not been read.",
+        "score": 0.7414,
+        "selection_reasons": [
+          "question keyword overlap 5/7 (weight 0.8)",
+          "year 2021 (recency weight 0.1)",
+          "abstract available: True (weight 0.1)"
+        ]
+      }
+    ],
+    "stage/analyze/1": {},
+    "stage/plan": {
+      "queries": [
+        "FQ-ViT"
+      ]
+    },
+    "stage/report": {},
+    "stage/review/1": {
+      "repeat": false,
+      "queries": []
+    },
+    "stage/search/1": {
+      "round": 1,
+      "repeat": false
+    }
+  },
+  "events": [
+    {
+      "id": 75,
+      "time": 1791005248.878231,
+      "stage": "control",
+      "kind": "continue",
+      "data": {}
+    },
+    {
+      "id": 76,
+      "time": 1791005248.885077,
+      "stage": "plan",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 77,
+      "time": 1791005250.697269,
+      "stage": "plan",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 1.789,
+        "usage": {
+          "completion_tokens": 117,
+          "prompt_tokens": 318,
+          "total_tokens": 435,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmZNNphCvzTxxmoQGxWpcXP2eZIq",
+        "contract": "Plan"
+      }
+    },
+    {
+      "id": 78,
+      "time": 1791005250.6987488,
+      "stage": "plan",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 1.814
+      }
+    },
+    {
+      "id": 79,
+      "time": 1791005250.701653,
+      "stage": "search/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 80,
+      "time": 1791005250.7098439,
+      "stage": "search/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.008
+      }
+    },
+    {
+      "id": 81,
+      "time": 1791005250.7113311,
+      "stage": "analyze/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 82,
+      "time": 1791005255.293535,
+      "stage": "analysis/arxiv:2111.13824",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 4.578,
+        "usage": {
+          "completion_tokens": 465,
+          "prompt_tokens": 846,
+          "total_tokens": 1311,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 303,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmZPGIhWfWUYhprY3tsHKb1gaFCK",
+        "contract": "Analysis"
+      }
+    },
+    {
+      "id": 83,
+      "time": 1791005257.443497,
+      "stage": "support/ev-ac2c4dd9fda1",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.147,
+        "usage": {
+          "completion_tokens": 130,
+          "prompt_tokens": 572,
+          "total_tokens": 702,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 46,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmZT6SmCySIUcQRDObCWe1l2QyJG",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 84,
+      "time": 1791005259.592078,
+      "stage": "support/ev-5d758ebd933c",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 2.145,
+        "usage": {
+          "completion_tokens": 112,
+          "prompt_tokens": 514,
+          "total_tokens": 626,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 53,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmZVxrX73FluyFSzPhPWOl4zR5QI",
+        "contract": "SupportDecision"
+      }
+    },
+    {
+      "id": 85,
+      "time": 1791005259.593698,
+      "stage": "analyze/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 8.882
+      }
+    },
+    {
+      "id": 86,
+      "time": 1791005259.595084,
+      "stage": "review/1",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 87,
+      "time": 1791005263.080641,
+      "stage": "review/1",
+      "kind": "model",
+      "data": {
+        "model": "gpt-5.6-luna",
+        "duration_seconds": 3.482,
+        "usage": {
+          "completion_tokens": 278,
+          "prompt_tokens": 925,
+          "total_tokens": 1203,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 164,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": null
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "image_tokens": null,
+            "text_tokens": null
+          }
+        },
+        "response_id": "chatcmpl-EUmZY4kEtKFOPeeX0qGRZQnVoUKwO",
+        "contract": "Review"
+      }
+    },
+    {
+      "id": 88,
+      "time": 1791005263.084716,
+      "stage": "review/1",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 3.489
+      }
+    },
+    {
+      "id": 89,
+      "time": 1791005263.086439,
+      "stage": "report",
+      "kind": "started",
+      "data": {}
+    },
+    {
+      "id": 90,
+      "time": 1791005263.088377,
+      "stage": "report",
+      "kind": "completed",
+      "data": {
+        "duration_seconds": 0.002
+      }
+    }
+  ]
+}
